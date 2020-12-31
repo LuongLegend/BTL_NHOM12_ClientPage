@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>News</h2>
+<table>
+    @foreach (var i in ViewBag.news)
+    {
+        <td></td>
+        <li>@i.new_ID</li>
+    }
+</table>
+<form action="/News/Index" method="post">
+    <input id="Text1" type="text" name="idgiday"/>
+    <input id="Submit1" type="submit" value="submit" />
+</form>
+    @foreach(var item in Model)
+    {
+        <h1>@item.new_ID</h1>
+        <div>@Html.Raw(@item.detail)</div>
+    }

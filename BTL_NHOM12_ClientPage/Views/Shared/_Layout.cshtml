@@ -1,42 +1,250 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@
+<!DOCTYPE html>
+<html lang="vi" xml:lang="vi">
 <head>
+    <title>Đồ Ngoại Chính Hãng mang Chất lượng và Uy tín đến tay người dùng</title>
+    <meta name="keywords" content="Đồ Ngoại Chính Hãng mang Chất lượng và Uy tín đến tay người dùng," />
+    <meta name="description" content="dongoaichinhhang.com  - Chuyên cung cấp các sản phẩm chính hãng trong và ngoài nước Uy tín và Chất lượng cao từ các hãng phân phối, nhà sản xuất hàng đầu 🌐 Website:  dongoaichinhhang.com   - ☎ Hotline: 0983 667 466" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow, noodp, noydir" />
+    <meta name="copyright" content="dongoaichinhhang.com - Hàng Chính Hãng" />
+    <meta name="author" content="dongoaichinhhang.com - Hàng Chính Hãng" />
+    <meta name="GENERATOR" content="dongoaichinhhang.com - Hàng Chính Hãng" />
+    <meta http-equiv="audience" content="General" />
+    <meta name="resource-type" content="Document" />
+    <meta name="distribution" content="Global" />
+    <meta name="revisit-after" content="1 days" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta property="og:site_name" content="dongoaichinhhang.com" />
+    <meta property="og:type" content="product" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:url" itemprop="url" content="https://dongoaichinhhang.com/" />
+    <meta property="og:title" content="Đồ Ngoại Chính Hãng mang Chất lượng và Uy tín đến tay người dùng" />
+    <meta property="og:description" content="dongoaichinhhang.com  - Chuyên cung cấp các sản phẩm chính hãng trong và ngoài nước Uy tín và Chất lượng cao từ các hãng phân phối, nhà sản xuất hàng đầu 🌐 Website:  dongoaichinhhang.com   - ☎ Hotline: 0983 667 466" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="dongoaichinhhang.com  - Chuyên cung cấp các sản phẩm chính hãng trong và ngoài nước Uy tín và Chất lượng cao từ các hãng phân phối, nhà sản xuất hàng đầu 🌐 Website:  dongoaichinhhang.com   - ☎ Hotline: 0983 667 466" />
+    <meta name="twitter:title" content="Đồ Ngoại Chính Hãng mang Chất lượng và Uy tín đến tay người dùng" />
+    <meta name="geo.placename" content="Việt Nam" />
+    <meta name="geo.region" content="VN" />
+    <meta name="geo.position" content="14.058324;108.277199" />
+    <meta name="ICBM" content="14.058324;108.277199" />
+    <link href="~/Assests/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="canonical" href="https://dongoaichinhhang.com/" />
+    <meta name="google-site-verification" content="48AkW556P7kUC2XfA3_8bpBMX2XeGCO_8XJQoltUfGU" />
+    <meta name="google-site-verification" content="b2WIN4dMcuVfhhWhoKnWYe5bcXApK2sOByZDzj-Z0KA" />
+    <link rel="stylesheet" href="~/Assests/CSS/cart.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Assests/CSS/menu.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Assests/CSS/styles4.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Assests/CSS/styles4.css" type="text/css" media="screen" />
+    <meta name="theme-color" content="#ff0000" />
+    <script src="~/Assests/js/common.js"></script>
+    <link rel="manifest" href="/manifest.json" />
+    <script type="text/javascript">if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('/sw4.js').then(function (registration) { console.log('ServiceWorker registration successful with scope: ', registration.scope) }).catch(function (err) { console.log('ServiceWorker registration failed: ', err) }) }) }</script>
+    <link rel="stylesheet" href="/css/home.css" type="text/css" media="screen" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-833009878"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag() { dataLayer.push(arguments); }gtag('js', new Date());gtag('config', 'AW-833009878');</script>
+    <script>gtag('event', 'page_view', {'send_to': 'AW-833009878','user_id': '','value': '','items': [{'id': '','google_business_vertical': 'retail'}]});</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137604948-1"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag() { dataLayer.push(arguments); }gtag('js', new Date());gtag('config', 'UA-137604948-1');</script>
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '299092611415381');fbq('track', 'PageView');</script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=299092611415381&ev=PageView&noscript=1" /></noscript>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div id="wrapper_content_page">
+        <header>
+            <div class="out-wraphead clr">
+                <div class="wraphead">
+                    <a class="icon-menu navbar-toggle" id="mobileMenu" data-toggle="collapse"><span class="icon-bar first"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+                    <a class="logo" title="dongoaichinhhang.com" href="/"><img src="~/Assests/images/dongoaichinhhang.png" alt="dongoaichinhhang.com" /></a><img id="sSrch" class="sSrch" src="~/Assests/images/iSearch.png" alt="search" />
+                    <form id="main-search" autocomplete="off" action="/SearchProduct/Index"><input class="topinput" type="text" maxlength="100" placeholder="Tìm sản phẩm..." id="keySearch" name="tk" autocomplete="off" /><button class="btntop" type="submit"><i class="icondmx-topsearch"></i></button></form>
+                    <div id="cart-box">
+                        <a href="/gio-hang.html" class="cart hidecb"><i class="icart"></i><span id="cbCount">0</span> </a>
+                        <aside id="core-brain">
+                            <div class="panel">
+                                <div id="cb-cart">
+                                    <div class="body between">
+                                        <div class="product-list ps-container ps-theme-default" id="list-cart"></div>
+                                        <div class="pull-bottom ">
+                                            <div class="cart-url">
+                                                <p>Bạn có <strong id="cb-cart-badge">0</strong> sản phẩm trong giỏ hàng</p>
+                                                <a href="/Cart/Index">Xem giỏ hàng</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clr"></div>
+                        </aside>
+                    </div>
+                    <div class="switchboard hmb"><a href="tel:0983667466">0983 667 466<span>Tư vấn Miễn Phí</span></a></div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+        </header>
+        <section class="mtsl clr">  
+            <h1 class="hdn">dongoaichinhhang.com Hệ thống phân phối hàng chính hãng số 1 Việt Nam</h1>
+            @RenderBody()
+            <div class="clr"></div>
+        </section>
+        <footer>
+            <div class="clr"></div>
+            <div class="footer_info">
+                <div id="show-fp"></div>
+                <section>
+                    <div class="page_info">
+                        <div class="pi-first">
+                            <div class="inner">
+                                <h4 class="title">	Phương Thức Thanh To&aacute;n</h4>
+                                <div class="clr">
+                                    <ul class="lpay">
+                                        <li><img alt="cash" src="~/Assests/images/cash.png" /></li>
+                                        <li><img alt="internet-banking" src="~/Assests/images/internet-banking.png" /></li>
+                                    </ul>
+                                    <a href="https://zalo.me/0983667466" target="_blank"><img alt="" src="~/Assests/fUp/zalo-barcode.png" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pi-second">
+                            <div class="inner">
+                                <h4 class="title clr">	Trung t&acirc;m ph&acirc;n phối</h4>
+                                <p>	Đ/c: 11/71 B&ugrave;i Đ&igrave;nh T&uacute;y, P.12, Q. B&igrave;nh Thạnh, TpHCM<br />	Hotline: <a href="tel:0983667466">0983 667 466</a><br />	Email: info@dongoaichinhhang.com<br />	Website: <a href="http://dongoaichinhhang.com/" rel="nofollow" title="Shop Đồ Ngoại">www.dongoaichinhhang.com </a></p>
+                            </div>
+                        </div>
+                        <div class="pi-third">
+                            <div class="show-map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1333.2537272719658!2d106.69780835760047!3d10.806865894974957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528c093fdafb9%3A0xbf42d864713572e1!2zMTEvNzEgQsO5aSDEkMOsbmggVHXDvSwgUGjGsOG7nW5nIDEyLCBCw6xuaCBUaOG6oW5oLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1550808182143" width="600" height="110" frameborder="0" style="border:0;max-width:100%" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                    <div class="footer-col">
+                        <div class="col-div col1">
+                            <div class="inner">
+                                <h4>Thông tin</h4>
+                                <ul>
+                                    <li><a href="/Home/Index" title="Trang chủ">Trang chủ</a></li>
+                                    <li><a href="/Home/About" title="Giới thiệu về  dongoaichinhhang.com  ">Giới thiệu về  dongoaichinhhang.com</a></li>
+                                    <li><a href="/Product/Index" title="Sản phẩm">Sản phẩm</a></li>
+                                    <li><a href="/Bonus/Index" title="Kho quà tặng">Kho quà tặng</a></li>
+                                    <li><a href="/News/Index" title="Kiến thức làm đẹp">Kiến thức làm đẹp</a></li>
+                                    <li><a href="/Contact/Index" title="Liên hệ">Liên hệ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-div col2">
+                            <div class="inner">
+                                <h4>Hướng dẫn</h4>
+                                <ul>
+                                    <li><a href="/lk/chinh-sach-hang-chinh-hang.html" title="Chính sách Đồ Ngoại Chính Hãng">Chính sách Đồ Ngoại Chính Hãng</a></li>
+                                    <li><a href="/lk/huong-dan-mua-hang.html" title="Hướng dẫn mua hàng">Hướng dẫn mua hàng</a></li>
+                                    <li><a href="/lk/giao-nhan-va-thanh-toan.html" title="Giao nhận và thanh toán">Giao nhận và thanh toán</a></li>
+                                    <li><a href="/lk/doi-tra-va-bao-hanh.html" title="Đổi trả hàng và bảo hành">Đổi trả hàng và bảo hành</a></li>
+                                    <li><a href="/lk/chinh-sach-hoan-tien.html" title="Chính sách Hoàn Tiền">Chính sách Hoàn Tiền</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-div col3">
+                            <div class="inner">
+                                <h4>Sản phẩm HOT</h4>
+                                <ul>
+                                    <li><a href="https://sily.vn/thuoc-collagen-chong-lao-hoa-dayoutheory-390-vien-type-1-2-3-my-collagen-6000mg-youtheory-biotin.html" title="Collagen Youtheory 390 Mỹ">Collagen Youtheory 390 Mỹ</a></li>
+                                    <li><a href="https://sily.vn/thuoc-moc-toc-danh-cho-nu-qik-hair-stpaul-brands-30-vien-cua-my.html" title="Thuốc mọc tóc Nữ QIK Hair Mỹ">Thuốc mọc tóc Nữ QIK Hair Mỹ</a></li>
+                                    <li><a href="https://goomart.vn/thuoc-ho-tro-moc-long-may-kaminomoto-eyebrows-rapid-growth-10ml-nhat-ban.html" title="Thuốc mọc lông Mày Kaminomoto">Thuốc mọc lông Mày Kaminomoto</a></li>
+                                    <li><a href="https://goomart.vn/vien-uong-trang-da-collagen-placenta-5-in-1-270-vien-nhat-ban.html" title="Collagen Placenta 5 in 1 trắng da Nhật">Collagen Placenta 5 in 1 trắng da Nhật</a></li>
+                                    <li><a href="https://goomart.vn/vien-uong-bo-xuong-khop-glucosamine-1500mg-orihiro-900-vien-nhat-ban.html" title="Glucosamine Orihiro 1500mg Nhật Bản">Glucosamine Orihiro 1500mg Nhật Bản</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-div col4 w100">
+                            <div class="inner">
+                                <h4>	Li&ecirc;n hệ</h4>
+                                <ul>
+                                    <li>		Shop<strong>&nbsp;ĐỒ NGOẠI CH&Iacute;NH H&Atilde;NG</strong></li>
+                                    <li>		Đ/c: 11/71 B&ugrave;i Đ&igrave;nh T&uacute;y, P.12, B&igrave;nh Thạnh, HCM</li>
+                                    <li>		Hotline: <a href="tel:0983667466">0983 667 466</a></li>
+                                    <li>		Email: <a href="mailto:info@dongoaichinhhang.com">info@dongoaichinhhang.com </a></li>
+                                    <li>		Website: <a href="http://dongoaichinhhang.com/"><strong>www.dongoaichinhhang.com </strong></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                </section>
+                <div class="footer-tabs">
+                    <section>
+                        <div class="mmb"></div>
+                        <div class="clr"></div>
+                    </section>
+                </div>
+            </div>
+        </footer>
+        <div class="hotlineM"><a href="tel:0983667466"><img src="~/Assests/images/hotline.png" alt="hotline" /></a></div>
+        <div id="gb-top-page" style="display: none;">↑</div>
+    </div>
+    <span class="h-geo geo" style="display: none;"><span class="p-latitude latitude">14.058324</span>,<span class="p-longitude longitude">108.277199</span></span>
+    <div id="cart_sidebar_html">
+        <div class="cart-sidebar">
+            <div id="cart-loading hide"></div>
+            <div class="widget-wrapper">
+                <div id="cart-info" class="cart-info">
+                    <span class="title">Giỏ Hàng</span><br /><br /><span id="showItemOrder"></span>
+                    <div class="buttons"><a href="/gio-hang.html" class="btn-pay" title="thanh toán">TIẾN HÀNH ĐẶT HÀNG</a><a href="#" onclick="return hideCart()" class="btn-viewcart hidden-lg hidden-md hidden-desktop" title="đóng giỏ hàng">ĐÓNG</a></div>
+                    <div>
+                        <div><b>HỖ TRỢ 24/7</b></div>
+                        <div style="margin: 10px 0;">Hotline: <a href="tel://0983667466" style="color: red; font-size: 18px; font-weight: 700">0983 667 466</a></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <div id="mobile-menu" class="mobile-menu"></div>
+    <script src="~/Assests/js/response.min.js"></script>
+    <script src="~/Assests/js/jquery.sticky.js"></script>
+    <script src="~/Assests/js/home.js"></script>
+    <script src="~/Assests/js/script.js"></script>
+    <script type="text/javascript">$(function () {var win = $(window); var loaded = 0; var loadedScrollTop = 0;win.scroll(function () {loadedScrollTop = 1;if ($(window).scrollTop() + window.innerHeight + 10 >= $('#show-fp').position().top && loaded == 0) {$('.show-map').html('<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1333.2537272719658!2d106.69780835760047!3d10.806865894974957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528c093fdafb9%3A0xbf42d864713572e1!2zMTEvNzEgQsO5aSDEkMOsbmggVHXDvSwgUGjGsOG7nW5nIDEyLCBCw6xuaCBUaOG6oW5oLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1550808182143" width="600" height="110" frameborder="0" style="border:0;max-width:100%" allowfullscreen></iframe>');loaded = 1;}});});</script>
+    @*<script type="application/ld+json">{"\@context": "http://schema.org","@type": "LocalBusiness","priceRange":"$$","image":"https://dongoaichinhhang.com/images/dongoaichinhhang.com192x192.png","name" : "dongoaichinhhang.com","telephone": "+84 983 667 466","address": {"@type": "PostalAddress","streetAddress": "11/71 Bùi Đình Túy, P.12, Bình Thạnh","addressLocality": "Hồ Chí Minh"}}</script>
+    <script type="application/ld+json">{"@context": "http://schema.org","@type": "WebSite","name":"Đồ Ngoại Chính Hãng","url":"https://dongoaichinhhang.com/","potentialAction": [{ "@type": "SearchAction","target": "/tim-kiem.html?tk={search_term_string}","query-input": "required name=search_term_string"}]}</script>*@
 </body>
 </html>

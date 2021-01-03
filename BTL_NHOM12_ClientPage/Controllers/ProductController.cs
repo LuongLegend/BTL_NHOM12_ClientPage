@@ -11,6 +11,7 @@ namespace BTL_NHOM12_ClientPage.Controllers
         // GET: Product
         public ActionResult Index()
         {
+
             return View();
         }
     }

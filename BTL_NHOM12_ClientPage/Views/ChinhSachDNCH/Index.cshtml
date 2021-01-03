@@ -9,8 +9,8 @@
             <div class="col-md-8">
                 <div class="col-left" style="background-color:#fff">
                     <article class="box-shock bica news">
-                        <h1>Chính sách Đồ Ngoại Chính Hãng</h1>
-                        <div class="poster">Ngày đăng: 23/05/2018, lượt xem: 225</div><div class="clr">
+                        <h1 style="font-weight: bold;font-size:larger">Chính sách Đồ Ngoại Chính Hãng</h1>
+                        <div class="clr">
                             <h2 style="text-align: center;">
                                 <a href="~/Assests/fUp/chinh-sach-hang-chinh-hang-anh-1.jpg"
                                    target="_blank" title="Chính sách Đồ Ngoại Chính Hãng ảnh
@@ -154,13 +154,89 @@
                         </div>
                     </article>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-primary ml-5" style="float:right">DANH MỤC SẢN PHẨM</button>
-                @foreach (var c in Model)
-                {
-                    <div class="row" style="float:right">@c.category_name</div>
-                }
+                <div class="col-right">
+                    <div class="sidebar sidebar-right">
+                        <div class="widget widget-seller">
+                            <div class="widget widget-seller">
+                                <h4 class="seller_title radius">Danh mục sản phẩm</h4>
+                                <div class="widget-content">
+                                    <ul class="category-ul-rght">
+                                        <li class="has-sub-cat active">
+                                            <a href="/Catagory?cat=1" title="Mỹ phẩm Đặc Trị">Mỹ phẩm Đặc Trị</a>
+                                            <ul style="display: block;">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.group_ID == "1")
+                                                    {
+                                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub-cat">
+                                            <a href="/Catagory?cat=2" title="Thực phẩm Chức Năng">Thực phẩm Chức Năng</a>
+                                            <ul style="display: none;">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.group_ID == "2")
+                                                    {
+                                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub-cat">
+                                            <a href="/Catagory?cat=3" title="Mỹ phẩm Chăm sóc Da">Mỹ phẩm Chăm sóc Da</a>
+                                            <ul style="display: none;">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.group_ID == "3")
+                                                    {
+                                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li class="has-sub-cat">
+                                            <a href="/Catagory?cat=4" title="Thuốc mọc Tóc, Râu, Mi, Mày">Thuốc mọc Tóc, Râu, Mi, Mày</a>
+                                            <ul style="display: none;">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.group_ID == "4")
+                                                    {
+                                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                        <li>  <a href="/Catagory?cat=6" title="Nước hoa Chính hãng">Nước hoa Chính hãng</a></li>
+                                        <li> <a href="/Catagory?cat=7" title="Collagen Đẹp Da">Collagen Đẹp Da</a></li>
+                                        <li class="has-sub-cat">
+                                            <a href="/Catagory?cat=8" title="Thương hiệu hàng đầu">Thương hiệu hàng đầu</a>
+                                            <ul style="display: none;">
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.group_ID == "8")
+                                                    {
+                                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clr"></div>
+                            <div class="widget widget-seller">
+                                <h4 class="seller_title radius">Thương hiệu hàng đầu</h4>
+                                <div class="widget-content">
+                                    <ul class="category-ul-rght"></ul>
+                                </div>
+                            </div>
+                            <div class="clr"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -156,7 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assests\CSS\cart.min.css" />
+    <Content Include="Assests\CSS\category.css" />
     <Content Include="Assests\CSS\home.css" />
+    <Content Include="Assests\CSS\jquery.fancybox.css" />
     <Content Include="Assests\CSS\menu.css" />
     <Content Include="Assests\CSS\owl-carousel.css" />
     <Content Include="Assests\CSS\styles4.css" />
@@ -261,7 +263,9 @@
     <Content Include="Assests\imgs\vien-tri-nam-transinowhitening-nhat-ban.jpg" />
     <Content Include="Assests\js\common.js" />
     <Content Include="Assests\js\home.js" />
+    <Content Include="Assests\js\jquery.fancybox.js" />
     <Content Include="Assests\js\jquery.sticky.js" />
+    <Content Include="Assests\js\news.js" />
     <Content Include="Assests\js\response.min.js" />
     <Content Include="Assests\js\script.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -313,15 +317,12 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\SearchProduct\Index.cshtml" />
-
     <Content Include="Views\ChinhSachDNCH\Index.cshtml" />
     <Content Include="Views\HuongDanMuaHang\Index.cshtml" />
     <Content Include="Views\GiaoHangVaThanhToan\Index.cshtml" />
     <Content Include="Views\BaoHanhVaDoiTra\Index.cshtml" />
     <Content Include="Views\ChinhSachHoanTien\Index.cshtml" />
-
     <Content Include="Views\Catagory\Index.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

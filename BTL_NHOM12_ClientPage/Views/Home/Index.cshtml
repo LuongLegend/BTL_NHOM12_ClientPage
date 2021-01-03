@@ -2,30 +2,431 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<nav class="menu">
+    <ul class="list-cat-icon">
+        <li class="has-cat-mega" data-submenu-id="submenu-97">
+            <h4>
+                <img src="~/Assests/imgs/my-pham-dac-tri-chinh-hang-1.png" alt="Mỹ phẩm Đặc Trị">
+                <a href="/Catagory?cat=1" title="Mỹ phẩm Đặc Trị">Mỹ phẩm Đặc Trị</a>
+            </h4>
+            <div id="submenu-97" class="cat-mega-menu cat-mega-style1">
+                <div class="banner-img">
+                    <a href="/Catagory?cat=1" title="Mỹ phẩm Đặc Trị">
+                        <img data-src="~/Assests/imgs/my-pham-dac-tri-2.jpg" alt="Mỹ phẩm Đặc Trị" class="lazy" src="~/Assests/imgs/my-pham-dac-tri-2.jpg" style="display: inline; opacity: 1;">
+                    </a>
+                </div>
+                <aside>
+                    <strong class="hmb"><a href="/Catagory?cat=1" title="Mỹ phẩm Đặc Trị">Mỹ phẩm Đặc Trị</a></strong>
+                    @foreach (var item in ViewBag.Cat)
+                    {
+                        if (item.group_ID == "1")
+                        {
+                            <a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a>
+                        }
+                    }
+                </aside>
+            </div>
+        </li>
+        <li class="has-cat-mega" data-submenu-id="submenu-164">
+            <h4>
+                <img src="~/Assests/imgs/thuc-pham-chuc-nang-1.png" alt="Thực phẩm Chức Năng">
+                <a href="/Catagory?cat=2" title="Thực phẩm Chức Năng">Thực phẩm Chức Năng</a>
+            </h4>
+            <div id="submenu-164" class="cat-mega-menu cat-mega-style1">
+                <div class="banner-img">
+                    <a href="/Catagory?cat=2" title="Thực phẩm Chức Năng">
+                        <img data-src="~/Assests/imgs/suc-khoe-dinh-duong-2.jpg" alt="Thực phẩm Chức Năng" class="lazy" src="~/Assests/imgs/suc-khoe-dinh-duong-2.jpg" style="display: inline; opacity: 1;">
+                    </a>
+                </div>
+                <aside>
+                    <strong class="hmb"><a href="/Catagory?cat=2" title="Thực phẩm Chức Năng">Thực phẩm Chức Năng</a></strong>
+                    @foreach (var item in ViewBag.Cat)
+                    {
+                        if (item.group_ID == "2")
+                        {
+                            <a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a>
+                        }
+                    }
+                </aside>
+            </div>
+        </li>
+        <li class="has-cat-mega" data-submenu-id="submenu-98">
+            <h4>
+                <img src="~/Assests/imgs/cham-soc-da-mat-1.png" alt="Mỹ phẩm Chăm sóc Da">
+                <a href="/Catagory?cat=3" title="Mỹ phẩm Chăm sóc Da">Mỹ phẩm Chăm sóc Da</a>
+            </h4>
+            <div id="submenu-98" class="cat-mega-menu cat-mega-style1">
+                <div class="banner-img">
+                    <a href="/Catagory?cat=3" title="Mỹ phẩm Chăm sóc Da">
+                        <img data-src="~/Assests/imgs/cham-soc-duong-da-mat-2.jpg" alt="Mỹ phẩm Chăm sóc Da" class="lazy" src="~/Assests/imgs/cham-soc-duong-da-mat-2.jpg" style="display: inline; opacity: 1;">
+                    </a>
+                </div>
+                <aside>
+                    <strong class="hmb"><a href="/Catagory?cat=3" title="Mỹ phẩm Chăm sóc Da">Mỹ phẩm Chăm sóc Da</a></strong>
+                    @foreach (var item in ViewBag.Cat)
+                    {
+                        if (item.group_ID == "3")
+                        {
+                            <a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a>
+                        }
+                    }
+                </aside>
+            </div>
+        </li>
+        <li class="has-cat-mega" data-submenu-id="submenu-100">
+            <h4>
+                <img src="~/Assests/imgs/cham-soc-toc-da-dau-1.png" alt="Thuốc mọc Tóc, Râu, Mi, Mày">
+                <a href="/Catagory?cat=4" title="Thuốc mọc Tóc, Râu, Mi, Mày">Thuốc mọc Tóc, Râu, Mi, Mày</a>
+            </h4>
+            <div id="submenu-100" class="cat-mega-menu cat-mega-style1">
+                <div class="banner-img"><a href="/Catagory?cat=4" title="Thuốc mọc Tóc, Râu, Mi, Mày"><img data-src="~/Assests/imgs/cham-soc-toc-rau-mi-long-may-2.jpg" alt="Thuốc mọc Tóc, Râu, Mi, Mày" class="lazy" src="~/Assests/imgs/cham-soc-toc-rau-mi-long-may-2.jpg" style="display: inline; opacity: 1;"></a></div>
+                <aside>
+                    <strong class="hmb"><a href="/Catagory?cat=4" title="Thuốc mọc Tóc, Râu, Mi, Mày">Thuốc mọc Tóc, Râu, Mi, Mày</a></strong>
+                    @foreach (var item in ViewBag.Cat)
+                    {
+                        if (item.group_ID == "4")
+                        {
+                            <a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a>
+                        }
+                    }
+                </aside>
+            </div>
+        </li>
+        <li>
+            <h4>
+                <img src="~/Assests/imgs/my-pham-trang-diem-moi-ngay-1.png" alt="Nước hoa Chính hãng">
+                <a href="/Catagory?cat=6" title="Nước hoa Chính hãng">Nước hoa Chính hãng</a>
+            </h4>
+        </li>
+        <li>
+            <h4>
+                <img src="~/Assests/imgs/san-pham-khuyen-mai-hot-1.png" alt="Collagen Đẹp Da">
+                <a href="/Catagory?cat=7" title="Collagen Đẹp Da">Collagen Đẹp Da</a>
+            </h4>
+        </li>
+        <li class="has-cat-mega" data-submenu-id="submenu-170">
+            <h4>
+                <img src="~/Assests/imgs/thuong-hieu-hang-dau-1.png" alt="Thương hiệu hàng đầu">
+                <a href="/Catagory?cat=8" title="Thương hiệu hàng đầu">Thương hiệu hàng đầu</a>
+            </h4>
+            <div id="submenu-170" class="cat-mega-menu cat-mega-style1">
+                <div class="banner-img"><a href="/Catagory?cat=8" title="Thương hiệu hàng đầu"><img data-src="~/Assests/imgs/thuong-hieu-hang-dau-2.jpg" alt="Thương hiệu hàng đầu" class="lazy" src="~/Assests/imgs/thuong-hieu-hang-dau-2.jpg" style="display: inline; opacity: 1;"></a></div>
+                <aside>
+                    <strong class="hmb"><a href="/Catagory?cat=8" title="Thương hiệu hàng đầu">Thương hiệu hàng đầu</a></strong>
+                    @foreach (var item in ViewBag.Cat)
+                    {
+                        if (item.group_ID == "8")
+                        {
+                            <a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a>
+                        }
+                    }
+                </aside>
+            </div>
+        </li>
+    </ul>
+</nav>
+@*center*@
+<h1 class="hdn">dongoaichinhhang.com Hệ thống phân phối hàng chính hãng số 1 Việt Nam</h1>
+<aside class="hm-bn">
+    <div id="sync1" class="owl-carousel owl-theme">
+        @*comment*@
+        @foreach (var item in @ViewBag.TopProduct)
+        {
+            <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                <img class="lazy" data-src="/Assests/@item.photo.Replace("~","")" src="/Assests/@item.photo.Replace("~","")" alt="@item.product_name" />
+            </a>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        }
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div id="sync2" class="owl-carousel owl-theme">
+        @*comment*@
+        @foreach (var item in @ViewBag.TopProduct)
+        {
+            <div class="item">
+                <h3>
+                    @item.product_name
+                </h3>
+            </div>
+        }
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</aside>
+<aside class="homenews hmb">
+    <div class="twobanner">
+        <a href="/lk/chinh-sach-hang-chinh-hang.html"> @*comment*@
+            <img src="~/Assests/imgs/banner-dongoaichinhhang-cam-ket-chinh-hang-100.jpg" alt="Banner dongoaichinhhang.com cam kết chính hãng 100%" />
+        </a>
+    </div>
+</aside>
+<div class="clr"></div>
+<div class="mhtemp">
+    <div class="barbox">
+        <h3 class="titlecate"><a href="/">Sản phẩm mua nhiều</a></h3>
+    </div>
+    <div class="box-shock">
+        <div class="rowsp">
+            <ul class="shockbox homeproduct owl-carousel owl-theme">
+                @foreach (var item in @ViewBag.TopProduct)
+                {
+                    <li>
+                        <div class="absoluteimg">
+                            <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                <img src="/Assests/@item.photo.Replace("~","")" />
+                            </a><div class="prolink"><a href="#" onclick="return showCart(50957, 1);"><i></i>&nbsp;Thêm giỏ hàng</a></div>
+                        </div>
+                        @foreach (var i in ViewBag.sale)
+                        {
+                            if (item.product_ID == i.product_ID)
+                            {
+                                var p = (i.sale_price / 1000).ToString() + "k";
+                                var m = (i.min_product).ToString() + "sp";
+                                <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
+                                break;
+                            }
+
+                        }
+                        <h3><a href="/Product/Index/@item.product_ID" title="Viên uống cấp nước Aqua Rich Innerb Cheiljedang Hàn Quốc 70 viên">@item.product_name</a></h3>
+                        <ins>
+                            @(string.Format("{0:000,0 đ}", item.price))
+                        </ins><div class="vote">
+                            <div style="width: 0%"></div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-2 clearfix">
+        <div class="barbox">
+            <h2 class="titlecate"><a href="/Catagory?cat=1" title="Mỹ phẩm Đặc Trị">Mỹ phẩm Đặc Trị</a></h2>
+        </div>
+        <div class="box-shock">
+            <div class="rowbn">
+                <ul class="homeproduct nonslider">
+                    @foreach (var item in @ViewBag.MyPhamDacTri)
+                    {
+                        <li>
+                            <div class="absoluteimg">
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    <img class="lazy"
+                                         data-src="/Assests/@item.photo.Replace("~","")"
+                                         alt="@item.product_name"
+                                         src="/Assests/@item.photo.Replace("~","")"
+                                         style="display: block; opacity: 1;" />
+                                </a>
+                                <div class="prolink">
+                                    <a href="#" onclick="return showCart(40565, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                </div>
+                            </div>
+                            @foreach (var i in @ViewBag.sale)
+                            {
+                                if (item.product_ID == i.product_ID)
+                                {
+                                    var p = (i.sale_price / 1000).ToString() + "k";
+                                    var m = (i.min_product).ToString() + "sp";
+                                    <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
+                                    break;
+                                };
+
+                            }
+
+                            <h3>
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    @item.product_name
+                                </a>
+                            </h3>
+                            <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                            <div class="vote"><div style="width: 0%;"></div></div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-2 clearfix">
+        <div class="barbox">
+            <h2 class="titlecate"><a href="/Catagory?cat=4" title="THUỐC MỌC TÓC, RÂU, MI, MÀY">THUỐC MỌC TÓC, RÂU, MI, MÀY</a></h2>
+        </div>
+        <div class="box-shock col-big2">
+            <div class="rowbn">
+                <ul class="homeproduct nonslider">
+                    @foreach (var item in @ViewBag.LongMy)
+                    {
+                        <li>
+                            <div class="absoluteimg">
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    <img class="lazy"
+                                         data-src="/Assests/@item.photo.Replace("~","")"
+                                         alt="@item.product_name"
+                                         src="/Assests/@item.photo.Replace("~","")"
+                                         style="display: block; opacity: 1;" />
+                                </a>
+                                <div class="prolink">
+                                    <a href="#" onclick="return showCart(40565, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                </div>
+                            </div>
+                            @foreach (var i in ViewBag.sale)
+                            {
+                                if (item.product_ID == i.product_ID)
+                                {
+                                    var p = (i.sale_price / 1000).ToString() + "k";
+                                    var m = (i.min_product).ToString() + "sp";
+                                    <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
+                                    break;
+                                }
+
+                            }
+                            <h3>
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    @item.product_name
+                                </a>
+                            </h3>
+                            <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                            <div class="vote"><div style="width: 0%;"></div></div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2 clearfix">
+        <div class="barbox">
+            <h2 class="titlecate"><a href="/Catagory?cat=3" title="Thực phẩm chăm sóc da">Thực phẩm chăm sóc da</a></h2>
+        </div>
+        <div class="box-shock col-big1">
+            <div class="rowbn">
+                <ul class="homeproduct nonslider">
+                    @foreach (var item in @ViewBag.ChamSocDa)
+                    {
+                        <li>
+                            <div class="absoluteimg">
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    <img class="lazy"
+                                         data-src="/Assests/@item.photo.Replace("~","")"
+                                         alt="@item.product_name"
+                                         src="/Assests/@item.photo.Replace("~","")"
+                                         style="display: block; opacity: 1;" />
+                                </a>
+                                <div class="prolink">
+                                    <a href="#" onclick="return showCart(40565, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                </div>
+                            </div>
+                            @foreach (var i in ViewBag.sale)
+                            {
+                                if (item.product_ID == i.product_ID)
+                                {
+                                    var p = (i.sale_price / 1000).ToString() + "k";
+                                    var m = (i.min_product).ToString() + "sp";
+                                    <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
+                                    break;
+                                }
+
+                            }
+                            <h3>
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    @item.product_name
+                                </a>
+                            </h3>
+                            <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                            <div class="vote"><div style="width: 0%;"></div></div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2 clearfix">
+        <div class="barbox">
+            <h2 class="titlecate"><a href="/Catagory?cat=2" title="Thực phẩm chức năng">Thực phẩm chức năng</a></h2>
+        </div>
+        <div class="box-shock col-big1">
+            <div class="rowbn">
+                <ul class="homeproduct nonslider">
+                    @foreach (var item in @ViewBag.TPCN)
+                    {
+                        <li>
+                            <div class="absoluteimg">
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    <img class="lazy"
+                                         data-src="/Assests/@item.photo.Replace("~","")"
+                                         alt="@item.product_name"
+                                         src="/Assests/@item.photo.Replace("~","")"
+                                         style="display: block; opacity: 1;" />
+                                </a>
+                                <div class="prolink">
+                                    <a href="#" onclick="return showCart(40565, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                </div>
+                            </div>
+                            @foreach (var i in ViewBag.sale)
+                            {
+                                if (item.product_ID == i.product_ID)
+                                {
+                                    var p = (i.sale_price / 1000).ToString() + "k";
+                                    var m = (i.min_product).ToString() + "sp";
+                                    <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
+                                    break;
+                                }
+
+                            }
+                            <h3>
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    @item.product_name
+                                </a>
+                            </h3>
+                            <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                            <div class="vote"><div style="width: 0%;"></div></div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2 clearfix">
+        <div class="barbox">
+            <h2 class="titlecate"><a href="/Catagory?cat=7" title="Collagen đẹp da">Collagen đẹp da</a></h2>
+        </div>
+        <div class="box-shock col-big1">
+            <div class="rowbn">
+                <ul class="homeproduct nonslider">
+                    @foreach (var item in @ViewBag.Collagen)
+                    {
+                        <li>
+                            <div class="absoluteimg">
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    <img class="lazy"
+                                         data-src="/Assests/@item.photo.Replace("~","")"
+                                         alt="@item.product_name"
+                                         src="/Assests/@item.photo.Replace("~","")"
+                                         style="display: block; opacity: 1;" />
+                                </a>
+                                <div class="prolink">
+                                    <a href="#" onclick="return showCart(40565, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                </div>
+                            </div>
+                            @foreach (var i in ViewBag.sale)
+                            {
+                                if (item.product_ID == i.product_ID)
+                                {
+                                    var p = (i.sale_price / 1000).ToString() + "k";
+                                    var m = (i.min_product).ToString() + "sp";
+                                    <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
+                                    break;
+                                }
+
+                            }
+                            <h3>
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    @item.product_name
+                                </a>
+                            </h3>
+                            <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                            <div class="vote"><div style="width: 0%;"></div></div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
     </div>
 </div>

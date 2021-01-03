@@ -131,6 +131,7 @@
     <Compile Include="Controllers\BaoHanhVaDoiTraController.cs" />
     <Compile Include="Controllers\BonusController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CatagoryController.cs" />
     <Compile Include="Controllers\ChinhSachController.cs" />
     <Compile Include="Controllers\ChinhSachDNCHController.cs" />
     <Compile Include="Controllers\ChinhSachHoanTienController.cs" />
@@ -149,6 +150,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LinqDoNgoaiChinhHang.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\Sale.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +235,7 @@
     <Content Include="Assests\Image\product\sp9.jpg" />
     <Content Include="Assests\Image\product\xia.jpg" />
     <Content Include="Assests\imgs\banner-dongoaichinhhang-cam-ket-chinh-hang-100.jpg" />
+    <Content Include="Assests\imgs\bestprice.jpg" />
     <Content Include="Assests\imgs\cham-soc-co-the-va-toan-than-1.png" />
     <Content Include="Assests\imgs\cham-soc-da-mat-1.png" />
     <Content Include="Assests\imgs\cham-soc-duong-da-mat-2.jpg" />
@@ -239,11 +243,14 @@
     <Content Include="Assests\imgs\cham-soc-toc-rau-mi-long-may-2.jpg" />
     <Content Include="Assests\imgs\dau-ca-healthy-care-fish-oil-omega-3-1000mg-uc-400-vien.jpg" />
     <Content Include="Assests\imgs\giam-can-giam-mo-bung-3.jpg" />
+    <Content Include="Assests\imgs\gioithieu.jpg" />
     <Content Include="Assests\imgs\kem-no-nguc-upsize-chinh-hang-tu-nga.jpg" />
     <Content Include="Assests\imgs\kem-tri-seo-gentacin-nhat-ban-10gr.jpg" />
     <Content Include="Assests\imgs\my-pham-dac-tri-2.jpg" />
+    <Content Include="Assests\imgs\my-pham-dac-tri-3.jpg" />
     <Content Include="Assests\imgs\my-pham-dac-tri-chinh-hang-1.png" />
     <Content Include="Assests\imgs\my-pham-trang-diem-moi-ngay-1.png" />
+    <Content Include="Assests\imgs\refund.jpg" />
     <Content Include="Assests\imgs\san-pham-khuyen-mai-hot-1.png" />
     <Content Include="Assests\imgs\serum-tri-mun-tai-tao-da-ba-lao.jpg" />
     <Content Include="Assests\imgs\suc-khoe-dinh-duong-2.jpg" />
@@ -306,15 +313,20 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\SearchProduct\Index.cshtml" />
+
     <Content Include="Views\ChinhSachDNCH\Index.cshtml" />
     <Content Include="Views\HuongDanMuaHang\Index.cshtml" />
     <Content Include="Views\GiaoHangVaThanhToan\Index.cshtml" />
     <Content Include="Views\BaoHanhVaDoiTra\Index.cshtml" />
     <Content Include="Views\ChinhSachHoanTien\Index.cshtml" />
+
+    <Content Include="Views\Catagory\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\ChinhSach\" />
+    <Folder Include="Views\View\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

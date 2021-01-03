@@ -128,12 +128,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaoHanhVaDoiTraController.cs" />
     <Compile Include="Controllers\BonusController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CatagoryController.cs" />
     <Compile Include="Controllers\ChinhSachController.cs" />
+    <Compile Include="Controllers\ChinhSachDNCHController.cs" />
+    <Compile Include="Controllers\ChinhSachHoanTienController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\GiaoHangVaThanhToanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HuongDanMuaHangController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SearchProductController.cs" />
@@ -155,7 +160,25 @@
     <Content Include="Assests\CSS\menu.css" />
     <Content Include="Assests\CSS\owl-carousel.css" />
     <Content Include="Assests\CSS\styles4.css" />
+    <Content Include="Assests\fUp\1%281%29.png" />
+    <Content Include="Assests\fUp\2.png" />
+    <Content Include="Assests\fUp\4.png" />
+    <Content Include="Assests\fUp\5.png" />
+    <Content Include="Assests\fUp\6 1.png" />
+    <Content Include="Assests\fUp\6 2.png" />
+    <Content Include="Assests\fUp\7.png" />
+    <Content Include="Assests\fUp\8.png" />
+    <Content Include="Assests\fUp\chinhsachhoantien.jpg" />
+    <Content Include="Assests\fUp\chinh-sach-hang-chinh-hang-anh-1.jpg" />
+    <Content Include="Assests\fUp\chinh-sach-hang-chinh-hang-anh-15 %281%29.png" />
+    <Content Include="Assests\fUp\chinh-sach-hang-chinh-hang-anh-15.png" />
+    <Content Include="Assests\fUp\chinh-sach-hang-chinh-hang-anh-23.jpg" />
+    <Content Include="Assests\fUp\giao-hàng-1.jpg" />
+    <Content Include="Assests\fUp\giao-hàng-2.jpg" />
+    <Content Include="Assests\fUp\giao-hang.jpg" />
     <Content Include="Assests\fUp\zalo-barcode.png" />
+    <Content Include="Assests\fUp\đổi-trả-1.jpg" />
+    <Content Include="Assests\fUp\đổi-trả-2.jpg" />
     <Content Include="Assests\images\call.png" />
     <Content Include="Assests\images\cart.png" />
     <Content Include="Assests\images\cash.png" />
@@ -290,7 +313,15 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\SearchProduct\Index.cshtml" />
+
+    <Content Include="Views\ChinhSachDNCH\Index.cshtml" />
+    <Content Include="Views\HuongDanMuaHang\Index.cshtml" />
+    <Content Include="Views\GiaoHangVaThanhToan\Index.cshtml" />
+    <Content Include="Views\BaoHanhVaDoiTra\Index.cshtml" />
+    <Content Include="Views\ChinhSachHoanTien\Index.cshtml" />
+
     <Content Include="Views\Catagory\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

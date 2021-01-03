@@ -1,23 +1,73 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@*@using BTL_NHOM12_ClientPage.Models
+@model List<New>*@
+<div class="container-fluid">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="col-left" style="background-color:#fff">
+                    <article class="box-shock bica news">
+                        <h1>Tư vấn làm đẹp</h1>
+                        <div class="poster">Ngày đăng: 09/04/2018, lượt xem: 232</div>
+                        <div class="clr">
+                            <p></p>
+                            <div class="rowsp">
+                                <ul class="lsn">
+                                    @foreach (var item in ViewBag.news)
+                                    {
+                                        <li class="li-news">
+                                            <a href="" title="Thuốc Mọc Râu Nakashima Nhật Bản: công dụng,có an toàn không,...">
+                                                @*<img data-src="/news/thuoc-moc-rau-nakashima-nhat-ban-cong-dung-co-an-toan-khong.jpg"
+                                                    class="lazy" align="left"
+                                                    alt=""
+                                                    src="@item.photo"
+                                                    style="display: block; opacity: 1;">*@
+                                                <img src="@item.photo" />
+                                                <h2>
+                                                    @item.title
+                                                </h2>
+                                            </a>@item.summary
+                                        </li>
+                                    }
 
-<h2>News</h2>
-<table>
-    @foreach (var i in ViewBag.news)
-    {
-        <td></td>
-        <li>@i.new_ID</li>
-    }
-</table>
-<form action="/News/Index" method="post">
-    <input id="Text1" type="text" name="idgiday"/>
-    <input id="Submit1" type="submit" value="submit" />
-</form>
-    @foreach(var item in Model)
-    {
-        <h1>@item.new_ID</h1>
-        <div>@Html.Raw(@item.detail)</div>
-    }
+                                </ul>
+                            </div>
+                            <div class="clr"></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary" style="float:right;">DANH MỤC SẢN PHẨM</button>
+                @foreach(var c in ViewBag.cates)
+                {
+                   <div class="row"  style="float:right">@c.category_name</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*<table>
+        @foreach (var i in ViewBag.news)
+        {
+        <tr>
+            <td></td>
+            <td>@i.new_ID</td>
+        </tr>
+        }
+    </table>
+    <form action="/News/Index" method="post">
+        <input id="Text1" type="text" name="idgiday"/>
+        <input id="Submit1" type="submit" value="submit" />
+    </form>
+        @foreach(var item in Model)
+        {
+            <h1>@item.new_ID</h1>
+            <div>@Html.Raw(@item.detail)</div>
+        }*@

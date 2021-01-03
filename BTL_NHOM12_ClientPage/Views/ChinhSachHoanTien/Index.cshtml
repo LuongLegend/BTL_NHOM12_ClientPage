@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="col-left" style="background-color:#fff">
+                    <article class="box-shock
+        bica news">
+                        <h1>Chính sách Hoàn Tiền</h1><div class="poster">
+                            Ngày đăng:
+                            05/05/2020, lượt xem: 215
+                        </div><div class="clr">
+                            <p style="text-align: center;">
+                                <img alt="" class="lazy
+                    quickview-link" data-src="~/Assests/fUp/chinhsachhoantien.jpg" style="text-align: center; width: 512px; height:
+                    285px; display: inline; opacity: 1;" src="~/Assests/fUp/chinhsachhoantien.jpg">
+                            </p><h2 id="hoan-tien-qua-tai-khoan-ngan-hang">
+                                HOÀN TIỀN QUA TÀI KHOẢN
+                                NGÂN HÀNG.
+                            </h2><p>
+                                Thời gian hoàn tất thủ tục hoàn tiền từ: 3 - 4
+                                ngày làm việc. Tuy nhiên, thủ tục bên phía ngân hàng có thể mất
+                                từ 1 đến 2 ngày để hiển thị số tiền bồi hoàn trong tài khoản của
+                                khách hàng.
+                            </p><p>
+                                Riêng đối với các loại thẻ thanh toán quốc tế
+                                (Visa, mastercard,...) tài khoản thẻ của khách hàng sẽ hiển thị
+                                số tiền bồi hoàn ở lần sao kê tiếp theo (thời gian dự kiến là 30
+                                ngày tùy theo ngân hàng).
+                            </p><p style="text-align: center;">
+                                <img alt="" class="lazy quickview-link"
+                                     data-src="~/Assests/fUp/chinh-sach-hang-chinh-hang-anh-15.png"
+                                     style="text-align: center; width: 700px; height: 196px;
+                    display: inline; opacity: 1;"
+                                     src="~/Assests/fUp/chinh-sach-hang-chinh-hang-anh-15.png">
+                            </p><h3>
+                                +
+                                <span style="color:#ff0000;"><strong>Hoàn tiền 100%</strong></span>
+                                trường hợp giao hàng sai hoặc đơn vị vận chuyển làm hư móp méo
+                                hàng hóa hoặc lỗi khách quan trong quá trình vận chuyển.
+                            </h3><h3>
+                                +
+                                <span style="color:#ff0000;"><strong>Hoàn tiền 300%</strong></span>
+                                trường hợp hàng hóa không đúng chất lượng.
+                            </h3>
+                            <div class="rowsp"><ul class="lsn"></ul></div><div class="clr"></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary ml-5" style="float:right">DANH MỤC SẢN PHẨM</button>
+                @foreach (var c in Model)
+                {
+                    <div class="row" style="float:right">@c.category_name</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

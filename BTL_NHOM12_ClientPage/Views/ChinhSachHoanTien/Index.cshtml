@@ -107,18 +107,6 @@
                                         </li>
                                         <li>  <a href="/Catagory?cat=6" title="Nước hoa Chính hãng">Nước hoa Chính hãng</a></li>
                                         <li> <a href="/Catagory?cat=7" title="Collagen Đẹp Da">Collagen Đẹp Da</a></li>
-                                        <li class="has-sub-cat">
-                                            <a href="/Catagory?cat=8" title="Thương hiệu hàng đầu">Thương hiệu hàng đầu</a>
-                                            <ul style="display: none;">
-                                                @foreach (var item in Model)
-                                                {
-                                                    if (item.group_ID == "8")
-                                                    {
-                                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
-                                                    }
-                                                }
-                                            </ul>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -126,7 +114,15 @@
                             <div class="widget widget-seller">
                                 <h4 class="seller_title radius">Thương hiệu hàng đầu</h4>
                                 <div class="widget-content">
-                                    <ul class="category-ul-rght"></ul>
+                                    <ul class="category-ul-rght">
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.group_ID == "8")
+                                            {
+                                                <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                            }
+                                        }
+                                    </ul>
                                 </div>
                             </div>
                             <div class="clr"></div>

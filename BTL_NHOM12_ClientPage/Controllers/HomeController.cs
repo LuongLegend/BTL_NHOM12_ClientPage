@@ -110,6 +110,8 @@ namespace BTL_NHOM12_ClientPage.Controllers
 
         public ActionResult About()
         {
+            var getAllCat = from a in db.Categories select a;
+            ViewBag.cates = getAllCat;
             return View();
         }
         

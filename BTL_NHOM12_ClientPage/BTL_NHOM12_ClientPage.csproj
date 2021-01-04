@@ -323,9 +323,11 @@
     <Content Include="Views\BaoHanhVaDoiTra\Index.cshtml" />
     <Content Include="Views\ChinhSachHoanTien\Index.cshtml" />
     <Content Include="Views\Catagory\Index.cshtml" />
+    <Content Include="Views\Product\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\All\" />
     <Folder Include="Views\ChinhSach\" />
     <Folder Include="Views\View\" />
   </ItemGroup>

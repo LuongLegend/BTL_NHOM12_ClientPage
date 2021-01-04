@@ -18,13 +18,14 @@
                                     @foreach (var item in ViewBag.news)
                                     {
                                         <li class="li-news">
-                                            <a href="" title="Thuốc Mọc Râu Nakashima Nhật Bản: công dụng,có an toàn không,...">
-                                                @*<img data-src="/news/thuoc-moc-rau-nakashima-nhat-ban-cong-dung-co-an-toan-khong.jpg"
+                                            <a href="" title="@item.title">
+                                                <img 
+                                                    data-src="/Assests/@item.photo.Replace("~","")"
                                                     class="lazy" align="left"
                                                     alt=""
-                                                    src="@item.photo"
-                                                    style="display: block; opacity: 1;">*@
-                                                <img src="/Assests/@item.photo.Replace("~","")" />
+                                                    src="/Assests/@item.photo.Replace("~","")"
+                                                    style="display: block; opacity: 1;"
+                                                />
                                                 <h2>
                                                     @item.title
                                                 </h2>
@@ -39,34 +40,89 @@
                     </article>
                 </div>
             </div>
-            <div class="col-md-4">
-                <button class="btn btn-primary" style="float:right;">DANH MỤC SẢN PHẨM</button>
-                @foreach(var c in ViewBag.cates)
-                {
-                   <div class="row"  style="float:right">@c.category_name</div>
-                }
+            <div class="col-right">
+                <div class="sidebar sidebar-right">
+                    <div class="widget widget-seller">
+                        <div class="widget widget-seller">
+                            <h4 class="seller_title radius">Danh mục sản phẩm</h4>
+                            <div class="widget-content">
+                                <ul class="category-ul-rght">
+                                    <li class="has-sub-cat active">
+                                        <a href="/Catagory?cat=1" title="Mỹ phẩm Đặc Trị">Mỹ phẩm Đặc Trị</a>
+                                        <ul style="display: block;">
+                                            @foreach (var item in ViewBag.cates)
+                                            {
+                                                if (item.group_ID == "1")
+                                                {
+                                                    <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub-cat">
+                                        <a href="/Catagory?cat=2" title="Thực phẩm Chức Năng">Thực phẩm Chức Năng</a>
+                                        <ul style="display: none;">
+                                            @foreach (var item in ViewBag.cates)
+                                            {
+                                                if (item.group_ID == "2")
+                                                {
+                                                    <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub-cat">
+                                        <a href="/Catagory?cat=3" title="Mỹ phẩm Chăm sóc Da">Mỹ phẩm Chăm sóc Da</a>
+                                        <ul style="display: none;">
+                                            @foreach (var item in ViewBag.cates)
+                                            {
+                                                if (item.group_ID == "3")
+                                                {
+                                                    <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </li>
+                                    <li class="has-sub-cat">
+                                        <a href="/Catagory?cat=4" title="Thuốc mọc Tóc, Râu, Mi, Mày">Thuốc mọc Tóc, Râu, Mi, Mày</a>
+                                        <ul style="display: none;">
+                                            @foreach (var item in ViewBag.cates)
+                                            {
+                                                if (item.group_ID == "4")
+                                                {
+                                                    <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </li>
+                                    <li>  <a href="/Catagory?cat=6" title="Nước hoa Chính hãng">Nước hoa Chính hãng</a></li>
+                                    <li> <a href="/Catagory?cat=7" title="Collagen Đẹp Da">Collagen Đẹp Da</a></li>
+                                    <li class="has-sub-cat">
+                                        <a href="/Catagory?cat=8" title="Thương hiệu hàng đầu">Thương hiệu hàng đầu</a>
+                                        <ul style="display: none;">
+                                            @foreach (var item in ViewBag.cates)
+                                            {
+                                                if (item.group_ID == "8")
+                                                {
+                                                    <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                        <div class="widget widget-seller">
+                            <h4 class="seller_title radius">Thương hiệu hàng đầu</h4>
+                            <div class="widget-content">
+                                <ul class="category-ul-rght"></ul>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-@*<table>
-        @foreach (var i in ViewBag.news)
-        {
-        <tr>
-            <td></td>
-            <td>@i.new_ID</td>
-        </tr>
-        }
-    </table>
-    <form action="/News/Index" method="post">
-        <input id="Text1" type="text" name="idgiday"/>
-        <input id="Submit1" type="submit" value="submit" />
-    </form>
-        @foreach(var item in Model)
-        {
-            <h1>@item.new_ID</h1>
-            <div>@Html.Raw(@item.detail)</div>
-        }*@

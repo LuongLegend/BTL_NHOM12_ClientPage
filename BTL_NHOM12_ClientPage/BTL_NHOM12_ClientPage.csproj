@@ -140,6 +140,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Bonus.cs" />
     <Compile Include="Models\LinqDoNgoaiChinhHang.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

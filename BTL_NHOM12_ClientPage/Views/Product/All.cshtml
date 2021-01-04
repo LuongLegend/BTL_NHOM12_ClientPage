@@ -1,55 +1,51 @@
 ﻿
 @{
-    ViewBag.Title = "Search Product";
+    ViewBag.Title = "All";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="col-left">
-    <div class="barbox">
-        <h1 class="titlecate">
-            Có <span style="color: red">@ViewBag.count</span> SP với từ khóa: <span style="color: red">@ViewBag.query</span>
-        </h1>
-    </div>
     <div class="box-shock">
         <div class="rowsp">
             <ul class="category-ul homeproduct nonslider">
                 @if (@ViewBag.products != null)
                 {
 
-                foreach (var item in @ViewBag.products)
-                {
-                    <li>
-                        <div class="absoluteimg">
-                            <a href="/Product/Index/@item.product_ID" title="@item.product_name">
-                                <img class="lazy"
-                                     data-src="/Assests/@item.photo.Replace("~","")"
-                                     alt="@item.product_name"
-                                     src="/Assests/@item.photo.Replace("~","")"
-                                     style="display: block; opacity: 1;" />
-                            </a>
-                            <div class="prolink">
-                                <a href="#" onclick="return showCart(40565, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                    foreach (var item in @ViewBag.products)
+                    {
+                        <li>
+                            <div class="absoluteimg">
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    <img class="lazy"
+                                         data-src="/Assests/@item.photo.Replace("~","")"
+                                         alt="@item.product_name"
+                                         src="/Assests/@item.photo.Replace("~","")"
+                                         style="display: block; opacity: 1;" />
+                                </a>
+                                <div class="prolink">
+                                    <a href="#" onclick="return showCart(40565, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                </div>
                             </div>
-                        </div>
-                        @foreach (var i in ViewBag.sale)
-                        {
-                            if (item.product_ID == i.product_ID)
+                            @foreach (var i in ViewBag.sale)
                             {
-                                var p = (i.sale_price / 1000).ToString() + "k";
-                                var m = (i.min_product).ToString() + "sp";
-                                <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
-                                break;
-                            }
+                                if (item.product_ID == i.product_ID)
+                                {
+                                    var p = (i.sale_price / 1000).ToString() + "k";
+                                    var m = (i.min_product).ToString() + "sp";
+                                    <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
+                                    break;
+                                }
 
-                        }
-                        <h3>
-                            <a href="/Product/Index/@item.product_ID" title="@item.product_name">
-                                @item.product_name
-                            </a>
-                        </h3>
-                        <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
-                        <div class="vote"><div style="width: 0%;"></div></div>
-                    </li>
-                }
+                            }
+                            <h3>
+                                <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                    @item.product_name
+                                </a>
+                            </h3>
+                            <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                            <div class="vote"><div style="width: 0%;"></div></div>
+                        </li>
+                    }
                 }
             </ul>
         </div>
@@ -134,3 +130,4 @@
         </div>
     </div>
 </div>
+

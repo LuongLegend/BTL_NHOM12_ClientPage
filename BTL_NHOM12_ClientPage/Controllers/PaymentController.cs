@@ -38,6 +38,31 @@ namespace BTL_NHOM12_ClientPage.Controllers
             }
             return pro;
         }
+        void insertBill(string id, 
+            string name, string phone, string address, string note, 
+            string time, string method)
+        {
+            Bill a = new Bill();
+            a.bill_ID = id;
+            a.bill_date = Convert.ToDateTime(time);
+            a.address = address;
+            a.phone = phone;
+            a.note = note;
+            a.username = name;
+            a.payment_method = method; //cod | banking
+            a.status_bill = "pending";
+            db.Bills.InsertOnSubmit(a);
+            db.SubmitChanges();
+        }
+        void insertProduct_Bill(string productID, string billID ,int quantity)
+        {
+            Product_Bill a = new Product_Bill();
+            a.product_ID = productID;
+            a.bill_ID = billID;
+            a.quanitity = quantity;
+            db.Product_Bills.InsertOnSubmit(a);
+            db.SubmitChanges();
+        }
         [HttpPost]
         public ActionResult Index()
         {
@@ -48,13 +73,14 @@ namespace BTL_NHOM12_ClientPage.Controllers
             string mode = Request["mode"];
             string productID = Request["productID"];
             string time = DateTime.Now.ToString("dd/MM/yyyy");
+            string madh = "DH" + RandomString(6);
             ViewBag.time = time;
             ViewBag.name = name;
             ViewBag.phone = phone;
             ViewBag.address = address;
             ViewBag.note = note;
             ViewBag.mode = mode;
-            ViewBag.madh = "DH"+RandomString(6);
+            ViewBag.madh = madh;
             if (mode == "onePro")
             {
                 ViewBag.product = getProductWithId(productID);
@@ -63,6 +89,8 @@ namespace BTL_NHOM12_ClientPage.Controllers
                                where p.product_ID == productID
                                select b;
                 ViewBag.bonus = getBonus;
+                insertBill(madh, name, phone, address, note, time, "cod");
+                insertProduct_Bill(productID, madh, 1);
             }
             return View();
         }

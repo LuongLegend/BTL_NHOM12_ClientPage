@@ -36,8 +36,12 @@ namespace BTL_NHOM12_ClientPage.Controllers
             var getCat = from c in db.Categories select c;
             ViewBag.sale = listSale;
             ViewBag.query = query;
-            ViewBag.cates = getCat; 
-            var a = from pro in db.Products where pro.product_name.Contains(query) select pro;
+            ViewBag.cates = getCat;
+            var a = from pro in db.Products
+                    where pro.product_name.Contains(query)
+                         || pro.product_brand.Contains(query)
+                         || pro.origin.Contains(query)
+                    select pro;
             foreach(var i in a)
             {
                 ProductsModel pro = new ProductsModel();

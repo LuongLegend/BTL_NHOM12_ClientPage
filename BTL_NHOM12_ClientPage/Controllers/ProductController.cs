@@ -190,13 +190,22 @@ namespace BTL_NHOM12_ClientPage.Controllers
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+
         bool checkDublicateKey(string id)
         {
             var a = from b in db.Contacts where b.contact_ID == id select b;
             return a.Count() > 0;
         }
+        bool checkProduct(string id)
+        {
+            var a = from b in db.Products where b.product_ID == id select b;
+            return a.Count() > 0;
+        }
         public ActionResult Index(string id)
         {
+            if(string.IsNullOrEmpty(id))
+            Response.Redirect("/Product/All");
+            
             ViewBag.allSale = getAllSale();
             ViewBag.sale = getSaleWithProductID(id);
             ViewBag.product = getProductWithId(id);
@@ -282,5 +291,6 @@ namespace BTL_NHOM12_ClientPage.Controllers
             ViewBag.products = listPro;
             return View();
         }
+
     }
 }

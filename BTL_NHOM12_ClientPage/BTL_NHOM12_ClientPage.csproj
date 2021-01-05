@@ -136,6 +136,7 @@
     <Compile Include="Controllers\ChinhSachDNCHController.cs" />
     <Compile Include="Controllers\ChinhSachHoanTienController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GiaoHangVaThanhToanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HuongDanMuaHangController.cs" />
@@ -167,6 +168,7 @@
     <Content Include="Assests\fUp\1%281%29.png" />
     <Content Include="Assests\fUp\2.png" />
     <Content Include="Assests\fUp\4.png" />
+    <Content Include="Assests\fUp\404-error-page-templates.jpg" />
     <Content Include="Assests\fUp\5.png" />
     <Content Include="Assests\fUp\6 1.png" />
     <Content Include="Assests\fUp\6 2.png" />
@@ -343,11 +345,10 @@
     <Content Include="Views\Catagory\Index.cshtml" />
     <Content Include="Views\Product\All.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\All\" />
-    <Folder Include="Views\ChinhSach\" />
     <Folder Include="Views\View\" />
   </ItemGroup>
   <ItemGroup>

@@ -118,20 +118,23 @@
                         <meta itemprop="bestRating" content="5">
                     </span>
                 </span>
-                <aside class="promo-online">
-                    <b><img src="~/Assests/images/icon-gift.png" alt="gift"> Quà tặng kèm theo:</b>
-                    <ul class="listprogift">
-                        @*@foreach(var item in ViewBag.sale) BONUS
-                        {
-                            <li class="w100">
-                                <img src="~/Assest/img/mat-na-duong-am-cho-da-tu-thien-nhien-innisfree-my-real-squeeze-mask-1-mieng.jpg" alt="mat-na-duong-am-cho-da-tu-thien-nhien-innisfree-my-real-squeeze-mask-1-mieng.jpg" align="left">
-                                <p>Mặt nạ dưỡng ẩm cho da từ thiên nhiên Innisfree My Real Squeeze Mask 1 Miếng</p>
-                                <br><ins>@(string.Format("{0:000,0 đ}", @item.sale_price))</ins>
-                            </li>
-                        }*@
-                    </ul>
-                    <div style="clear:both"></div>
-                </aside>
+                @if(ViewBag.bonusCount > 0)
+                {
+                    <aside class="promo-online">
+                        <b><img src="~/Assests/images/icon-gift.png" alt="gift"> Quà tặng kèm theo:</b>
+                        <ul class="listprogift">
+                            @foreach(var item in ViewBag.bonus)
+                            {
+                                <li class="w100">
+                                    <img src="~/Assests/@item.photo.Replace("~", "")" align="left">
+                                    <p>@item.name_bonus</p>
+                                    <br><ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                                </li>
+                            }
+                        </ul>
+                        <div style="clear:both"></div>
+                    </aside>
+                }
                 <input id="txtIdPro" type="hidden" value="20313">
                 <div class="detail-extralink">
                     <input class="qty-val" id="txtQty" value="1" min="1" type="number" max="99">

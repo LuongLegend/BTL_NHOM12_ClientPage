@@ -183,7 +183,6 @@ namespace BTL_NHOM12_ClientPage.Controllers
             }
             return num;
         }
-
         public ActionResult Index(string id)
         {
             ViewBag.allSale = getAllSale();
@@ -192,6 +191,13 @@ namespace BTL_NHOM12_ClientPage.Controllers
             ViewBag.topProduct = getTopProduct(8);
             ViewBag.relatingProduct = getRelatingProduct(id);
             ViewBag.boughtNumber = getProductBoughtNumber(id);
+            //get bonus of product
+            var getBonus = from b in db.Bonus
+                           join p in db.Product_Bonus on b.bonus_ID equals p.bonus_ID
+                           where p.product_ID == id
+                           select b;
+            ViewBag.bonusCount = getBonus.Count();
+            ViewBag.bonus = getBonus;
             return View();
         }
         public ActionResult All()

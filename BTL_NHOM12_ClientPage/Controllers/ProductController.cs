@@ -191,6 +191,7 @@ namespace BTL_NHOM12_ClientPage.Controllers
             ViewBag.topProduct = getTopProduct(8);
             ViewBag.relatingProduct = getRelatingProduct(id);
             ViewBag.boughtNumber = getProductBoughtNumber(id);
+            ViewBag.productID = id;
             //get bonus of product
             var getBonus = from b in db.Bonus
                            join p in db.Product_Bonus on b.bonus_ID equals p.bonus_ID

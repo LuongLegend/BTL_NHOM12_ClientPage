@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="boxct bica" style="margin-bottom:30px">
+    <h1 style="font-size:20px;color:red;text-align:center;margin-top:20px">Đặt hàng thành công !</h1>
+    <div class="atablediv">
+        <img src="~/Assests/images/iconShoppingCartFinnish.png" alt="Đặt hàng thành công" align="left" style="width:200px;margin:0 50px" class="hmb">
+        <div style="float:left;max-width:500px">
+            <h3>THÔNG TIN ĐẶT HÀNG:</h3>
+            <div>Họ và Tên: <b>@ViewBag.name</b></div>
+            <div>Điện Thoại: <b>@ViewBag.phone</b></div>
+            <div>Địa Chỉ: <b>@ViewBag.address</b></div>
+            <div style="display:none">Ghi Chú: <b>@ViewBag.note</b></div>
+        </div>
+        <div style="clear:both"></div>
+        <div style="background-color:#fcf7f7;border:solid 1px #f5c4a2;padding:0 5px">
+            <div>Ngày Đặt: <b>@ViewBag.time</b></div>
+            <div>Mã Đơn: <b>@ViewBag.madh</b></div>
+            <div>PT thanh toán: 
+                @if (ViewBag.mode == "onePro")
+                {
+                    <b>COD nhận hàng và thanh toán tại nhà</b>  
+                }
+            </div>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <br>
+    <div class="atablediv">
+        <h3>CHI TIẾT ĐƠN HÀNG:</h3>
+        <table class="atable">
+            <tbody>
+                <tr style="background-color:#f5c4a2; height:36px">
+                    <td>&nbsp;<b>SẢN PHẨM</b></td>
+                    <td style="width:100px" class="hmb"><b>&nbsp;THÀNH&nbsp;TIỀN&nbsp;</b></td>
+                </tr>
+                <tr>
+                    @if (ViewBag.mode == "onePro")
+                    {
+                        <td>
+                            <img src="~/Assests/@ViewBag.product.photo.Replace("~","")" align="left" class="aimg">
+                            <div><b>@ViewBag.product.product_name</b></div>
+                            <i>Tặng kèm:</i>
+                            @foreach(var item in ViewBag.bonus)
+                            {
+                                <span style="color: red">+ @item.name_bonus<br>
+                                </span>
+                            }
+                            <div>Số lượng: <b style="color: red">1 x <ins>@(string.Format("{0:000,0 đ}", ViewBag.product.price))</ins></b></div>
+                        </td>
+                        <td style="text-align:center;color:red" class="hmb"><b>@(string.Format("{0:000,0 đ}", ViewBag.product.price))</b></td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+        <table border="0" class="todrf">
+            <tbody>
+                @if (ViewBag.mode == "onePro")
+                {
+                    <tr style="border-bottom:solid 1px #e0e0e0">
+                        <td style="text-align:right">Tiền hàng : </td>
+                        <td style="text-align:right;width:120px;color:red">@(string.Format("{0:000,0 đ}", ViewBag.product.price))</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Giảm Chiết Khấu : </td>
+                        <td style="text-align:right;color:green">- 0₫</td>
+                    </tr>
+
+                    <tr style="border-top:solid 1px #e0e0e0">
+                        <td style="text-align:right">Tổng tiền cần thanh toán : <br><i style="color:gray">(Nhận hàng mới thanh toán)</i> </td>
+                        <td style="text-align:right;color:red;font-weight:700;vertical-align:middle">@(string.Format("{0:000,0 đ}", ViewBag.product.price))</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <h2 style="font-size:17px;color:blue;margin-bottom:30px;text-align:center">Cám ơn Bạn đã đặt hàng, chúng tôi sẽ liên hệ lại trong thời gian sớm nhất. Cám ơn !</h2>
+    <h3 style="text-align:center"><a href="/" style="color:red">Về Trang Chủ</a></h3>
+    <div></div>
+</div>
+

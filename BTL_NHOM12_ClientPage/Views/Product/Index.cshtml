@@ -175,21 +175,28 @@
             </div>
             <div class="oqfl"><img class="lazy" alt="Giỏ hàng dongoaichinhhang" src="~/Assests/images/giohang.png" style="display: inline; opacity: 1;"></div>
             <div class="form-order clearfix oqfr">
-                <form class="form-inline" id="formQuickOrder">
-                    <div class="form-div col-xs-12">
-                        <div class="iUs"></div>
-                        <input type="text" class="form-control" id="txtFullName" value="z" placeholder="Họ tên (*)">
-                        <div class="iPo"></div>
-                        <input type="tel" class="form-control" id="txtPhone" value="4324234232" placeholder="Số điện thoại (*)">
-                        <div class="iAd"></div>
-                        <input type="text" class="form-control" id="txtAddress" value="" placeholder="Địa chỉ (*)">
-                        <div class="iNo"></div>
-                        <textarea rows="4" id="txtNote" class="form-control" placeholder="Ghi chú hoặc Mã quà tặng" style="height: auto"></textarea>
+                <form method="post" action="~/Payment/Index">
+                    <div class="form-group">
+                        <label for="inputName">Họ tên</label>
+                        <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Họ tên..." style="padding: 12px" required>
                     </div>
-                    <div class="form-div col-xs-12" style="text-align: center">
-                        <a class="btn btn-primary" href="javascript:void();" id="btnSendOrder">ĐẶT HÀNG NHANH</a>
-                        <div id="redataorder"></div>
+                    <div class="form-group">
+                        <label for="inputPhone">Số điện thoại</label>
+                        <input type="text" class="form-control" id="inputPhone" name="inputPhone"  placeholder="Số điện thoại" style="padding: 12px" 
+                               required maxlength="10" minlength="10" pattern="[0-9]+"
+                               >
                     </div>
+                    <div class="form-group">
+                        <label for="inputAdress">Địa chỉ</label>
+                        <input type="text" class="form-control" id="inputAdress" name="inputAddress" placeholder="Địa chỉ" style="padding: 12px" required>
+                    </div>
+                    <input name="productID" value="@ViewBag.productID" style="display:none" />
+                    <input name="mode" value="onePro" style="display:none" />
+                    <div class="form-group">
+                        <label for="inputNote">Ghi chú hoặc mã quà tặng</label>
+                        <textarea class="form-control" id="inputNote" name="inputNote" rows="5" placeholder="Ghi chú hoặc mã quà tặng" style="padding: 12px;height:60px"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">Đặt hàng nhanh</button>
                 </form>
             </div>
         </div>

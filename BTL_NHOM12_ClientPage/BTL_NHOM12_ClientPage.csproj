@@ -140,6 +140,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HuongDanMuaHangController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SearchProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,11 +196,16 @@
     <Content Include="Assests\images\hoan-tra-tien.png" />
     <Content Include="Assests\images\hotline.png" />
     <Content Include="Assests\images\i-cart.png" />
+    <Content Include="Assests\images\iAd.png" />
     <Content Include="Assests\images\icon-gift.png" />
     <Content Include="Assests\images\icon-km.gif" />
+    <Content Include="Assests\images\iconShoppingCartFinnish.png" />
     <Content Include="Assests\images\ifship.png" />
+    <Content Include="Assests\images\iNo.png" />
     <Content Include="Assests\images\internet-banking.png" />
+    <Content Include="Assests\images\iPo.png" />
     <Content Include="Assests\images\iSearch.png" />
+    <Content Include="Assests\images\iUs.png" />
     <Content Include="Assests\images\search.png" />
     <Content Include="Assests\images\thanh-toan.png" />
     <Content Include="Assests\images\thong-tin.png" />
@@ -336,6 +342,7 @@
     <Content Include="Views\ChinhSachHoanTien\Index.cshtml" />
     <Content Include="Views\Catagory\Index.cshtml" />
     <Content Include="Views\Product\All.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

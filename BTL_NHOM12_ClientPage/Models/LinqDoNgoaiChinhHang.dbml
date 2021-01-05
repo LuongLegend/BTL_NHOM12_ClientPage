@@ -38,12 +38,68 @@
       <Association Name="Bonus_Product_Bonus" Member="Product_Bonus" ThisKey="bonus_ID" OtherKey="bonus_ID" Type="Product_Bonus" />
     </Type>
   </Table>
-  <Table Name="dbo.Sale" Member="Sales">
-    <Type Name="Sale">
+  <Table Name="dbo.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="category_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="category_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="group_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Category_Product_Category" Member="Product_Categories" ThisKey="category_ID" OtherKey="category_ID" Type="Product_Category" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Contact" Member="Contacts">
+    <Type Name="Contact">
+      <Column Name="contact_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="status_Contact" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="product_name" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.News" Member="News">
+    <Type Name="New">
+      <Column Name="new_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="photo" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="detail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="status_News" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="summary" Type="System.String" DbType="NVarChar(800)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product_Bill" Member="Product_Bills">
+    <Type Name="Product_Bill">
+      <Column Name="bill_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="product_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quanitity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Bill_Product_Bill" Member="Bill" ThisKey="bill_ID" OtherKey="bill_ID" Type="Bill" IsForeignKey="true" />
+      <Association Name="Product_Product_Bill" Member="Product" ThisKey="product_ID" OtherKey="product_ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product_Bonus" Member="Product_Bonus">
+    <Type Name="Product_Bonus">
+      <Column Name="product_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="bonus_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Bonus_Product_Bonus" Member="Bonus" ThisKey="bonus_ID" OtherKey="bonus_ID" Type="Bonus" IsForeignKey="true" />
+      <Association Name="Product_Product_Bonus" Member="Product" ThisKey="product_ID" OtherKey="product_ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product_Category" Member="Product_Categories">
+    <Type Name="Product_Category">
+      <Column Name="product_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="category_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Category_Product_Category" Member="Category" ThisKey="category_ID" OtherKey="category_ID" Type="Category" IsForeignKey="true" />
+      <Association Name="Product_Product_Category" Member="Product" ThisKey="product_ID" OtherKey="product_ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product_Sale" Member="Product_Sales">
+    <Type Name="Product_Sale">
+      <Column Name="product_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="sale_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="min_product" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="sale_price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Sale_Product_Sale" Member="Product_Sales" ThisKey="sale_ID" OtherKey="sale_ID" Type="Product_Sale" />
+      <Association Name="Product_Product_Sale" Member="Product" ThisKey="product_ID" OtherKey="product_ID" Type="Product" IsForeignKey="true" />
+      <Association Name="Sale_Product_Sale" Member="Sale" ThisKey="sale_ID" OtherKey="sale_ID" Type="Sale" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Products" Member="Products">
@@ -59,74 +115,18 @@
       <Column Name="photo" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="detail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Product_Product_Sale" Member="Product_Sales" ThisKey="product_ID" OtherKey="product_ID" Type="Product_Sale" />
+      <Association Name="Product_Product_Bill" Member="Product_Bills" ThisKey="product_ID" OtherKey="product_ID" Type="Product_Bill" />
       <Association Name="Product_Product_Bonus" Member="Product_Bonus" ThisKey="product_ID" OtherKey="product_ID" Type="Product_Bonus" />
       <Association Name="Product_Product_Category" Member="Product_Categories" ThisKey="product_ID" OtherKey="product_ID" Type="Product_Category" />
-      <Association Name="Product_Product_Bill" Member="Product_Bills" ThisKey="product_ID" OtherKey="product_ID" Type="Product_Bill" />
+      <Association Name="Product_Product_Sale" Member="Product_Sales" ThisKey="product_ID" OtherKey="product_ID" Type="Product_Sale" />
     </Type>
   </Table>
-  <Table Name="dbo.Product_Sale" Member="Product_Sales">
-    <Type Name="Product_Sale">
-      <Column Name="product_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+  <Table Name="dbo.Sale" Member="Sales">
+    <Type Name="Sale">
       <Column Name="sale_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Product_Product_Sale" Member="Product" ThisKey="product_ID" OtherKey="product_ID" Type="Product" IsForeignKey="true" />
-      <Association Name="Sale_Product_Sale" Member="Sale" ThisKey="sale_ID" OtherKey="sale_ID" Type="Sale" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Product_Bonus" Member="Product_Bonus">
-    <Type Name="Product_Bonus">
-      <Column Name="product_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="bonus_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Bonus_Product_Bonus" Member="Bonus" ThisKey="bonus_ID" OtherKey="bonus_ID" Type="Bonus" IsForeignKey="true" />
-      <Association Name="Product_Product_Bonus" Member="Product" ThisKey="product_ID" OtherKey="product_ID" Type="Product" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Product_Category" Member="Product_Categories">
-    <Type Name="Product_Category">
-      <Column Name="product_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="category_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Product_Product_Category" Member="Product" ThisKey="product_ID" OtherKey="product_ID" Type="Product" IsForeignKey="true" />
-      <Association Name="Category_Product_Category" Member="Category" ThisKey="category_ID" OtherKey="category_ID" Type="Category" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Product_Bill" Member="Product_Bills">
-    <Type Name="Product_Bill">
-      <Column Name="bill_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="product_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="quanitity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Bill_Product_Bill" Member="Bill" ThisKey="bill_ID" OtherKey="bill_ID" Type="Bill" IsForeignKey="true" />
-      <Association Name="Product_Product_Bill" Member="Product" ThisKey="product_ID" OtherKey="product_ID" Type="Product" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.News" Member="News">
-    <Type Name="New">
-      <Column Name="new_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="photo" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="detail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="status_News" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="summary" Type="System.String" DbType="NVarChar(800)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Contact" Member="Contacts">
-    <Type Name="Contact">
-      <Column Name="contact_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="phone" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
-      <Column Name="address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="note" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="create_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="status_Contact" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="product_name" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Categories" Member="Categories">
-    <Type Name="Category">
-      <Column Name="category_ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="category_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="group_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Category_Product_Category" Member="Product_Categories" ThisKey="category_ID" OtherKey="category_ID" Type="Product_Category" />
+      <Column Name="min_product" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sale_price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Sale_Product_Sale" Member="Product_Sales" ThisKey="sale_ID" OtherKey="sale_ID" Type="Product_Sale" />
     </Type>
   </Table>
 </Database>

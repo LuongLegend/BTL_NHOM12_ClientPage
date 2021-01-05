@@ -10,25 +10,18 @@
             <div class="col-md-8">
                 <div class="col-left" style="background-color:#fff">
                     <article class="box-shock bica news">
-                        <h1>Tư vấn làm đẹp</h1>
                         <div class="clr">
                             <p></p>
                             <div class="rowsp">
                                 <ul class="lsn">
-                                    @foreach (var item in ViewBag.news)
+                                    @foreach (var item in Model)
                                     {
-                                        <li class="li-news">
-                                            <a href="/ReviewNews/Index/@item.new_ID" title="@item.title">
-                                                <img data-src="/Assests/@item.photo.Replace("~","")"
-                                                     class="lazy" align="left"
-                                                     alt=""
-                                                     src="/Assests/@item.photo.Replace("~","")"
-                                                     style="display: block; opacity: 1;" />
-                                                <h2>
-                                                    @item.title
-                                                </h2>
-                                            </a>@item.summary
-                                        </li>
+                                    <li class="li-news">
+                                        <h2>
+                                            @item.title
+                                        </h2>
+                                        @Html.Raw(HttpUtility.HtmlDecode(@item.detail))
+                                    </li>
                                     }
 
                                 </ul>

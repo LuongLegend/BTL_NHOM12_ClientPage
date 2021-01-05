@@ -143,16 +143,41 @@
                         <div class="xhc">Xem hàng trước, nhận hàng trả tiền</div>
                     </a>
                 </div>
-                <script>$("#txtQty").change(function () { var iQty = parseInt($('#txtQty').val()); var pMin = @ViewBag.product.price; var pMin2 = @ViewBag.product.price - @ViewBag.sale.sale_price; if (iQty < 1) iQty = 1; if (iQty >= @ViewBag.sale.min_product) { findCt('insPrice').innerHTML = pMin2.toLocaleString() + 'đ'; } else findCt('insPrice').innerHTML = pMin.toLocaleString() + 'đ'; $('#aOdr').attr('href', '/gio-hang.html?i=20313.' + iQty); });</script>
-                <div class="boxcust">
-                    <span id="alertcallforme"></span>
-                    <h4>GỌI LẠI CHO TÔI</h4>
-                    <span id="formcallme"></span>
-                    <input type="text" id="txt-cus-name" class="cus-name" placeholder="Họ và tên">
-                    <input type="tel" id="txt-cus-phone" class="cus-phone" placeholder="Để lại số điện thoại, chúng tôi gọi lại ngay">
-                    <input type="button" id="btn-send-cust" class="btn-send-cust" value="GỬI">
-                    <div class="clr"></div>
-                </div>
+                <script>
+                    $("#txtQty")
+                        .change(function () {
+                            var iQty = parseInt($('#txtQty').val());
+                            var pMin = @ViewBag.product.price;
+                            var pMin2 = @ViewBag.product.price - @ViewBag.sale.sale_price;
+                            if (iQty < 1) iQty = 1;
+                            if (iQty >= @ViewBag.sale.min_product) {
+                                findCt('insPrice').innerHTML = pMin2.toLocaleString() + 'đ';
+                            } else
+                                findCt('insPrice').innerHTML = pMin.toLocaleString() + 'đ';
+                            $('#aOdr').attr('href', '/Cart?i=20313.' + iQty);
+                        });
+                </script>
+                @{ 
+                <form method="post" action="/Product/Index/@ViewBag.productID">
+                    <div class="boxcust">
+                        @if (ViewBag.contacted == "true")
+                        {
+                            <span style="color: #fff">Chúng tôi sẽ liên lạc lại với Bạn trong thời gian sớm nhất!</span>
+                        }
+                        else
+                        {
+                                <span id="alertcallforme"></span>
+                                <h4>GỌI LẠI CHO TÔI</h4>
+                                <span id="formcallme"></span>
+                                <input type="text" id="txt-cus-name" class="cus-phone" name="subCusName" placeholder="Họ và tên" style="width:100%" required>
+                                <input type="tel" id="txt-cus-phone" class="cus-phone" name="subCusPhone" placeholder="Số điện thoại(10 số)" required minlength="10" maxlength="10" pattern="[0-9]+" style="width:100%">
+                                <br/>
+                                <input type="submit" id="btn-send-cust" class="btn-send-cust" value="GỬI">
+                                <div class="clr"></div>
+                        }
+                    </div>
+                </form>
+                }
                 <div class="gdm">Gọi đặt mua: <img class="lazy" alt="call" src="~/Assests/images/ho-tro-247.png" style="display: inline; opacity: 1;"> <a href="tel:0983667466">0983 667 466</a> (tư vấn miễn phí)</div>
             </div>
         </div>
@@ -165,14 +190,7 @@
                 </div>
             </div>
         </div>
-        <p class="hmb" style="text-align:center"><a class="abodr" href="/gio-hang.html?i=20313">Đặt Hàng Ngay<br></a></p>
         <div class="box-similar">
-            <p class="headdetail">Đặt hàng nhanh</p>
-            <div style="text-align:center">
-                <img class="lazy" alt="Giỏ hàng dongoaichinhhang" src="~/Assests/images/dongoaichinhhang-chinh-sach-ban-hang.jpg" style="display: inline; opacity: 1;">
-                <p class="hodr">Bạn muốn <span>ĐẶT MUA NGAY</span> sản phẩm này hoặc muốn được <span>TƯ VẤN</span> rõ hơn về sản phẩm trước khi mua hàng, hãy <span>GỌI</span> vào số <span>hotline <a href="tel:0983667466" style="font-weight:700;color:red;font-size:150%">0983 667 466</a></span> của chúng tôi hoặc để lại thông tin bên dưới. Chúng tôi sẽ gọi lại bạn hoàn toàn <span>MIỄN PHÍ</span> chỉ sau ít phút.</p>
-                <img src="~/Assests/images/xem.gif" alt="Giỏ hàng dongoaichinhhang">
-            </div>
             <div class="oqfl"><img class="lazy" alt="Giỏ hàng dongoaichinhhang" src="~/Assests/images/giohang.png" style="display: inline; opacity: 1;"></div>
             <div class="form-order clearfix oqfr">
                 <form method="post" action="~/Payment/Index">

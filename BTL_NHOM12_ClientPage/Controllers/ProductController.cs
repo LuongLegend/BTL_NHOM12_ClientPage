@@ -10,6 +10,7 @@ namespace BTL_NHOM12_ClientPage.Controllers
     {
         // GET: Product
         LinqDoNgoaiChinhHangDataContext db = new LinqDoNgoaiChinhHangDataContext();
+        Random random = new Random();
         List<ProductsModel> getTopProduct(int limit=10000)
         {
             List<ProductsModel> listTopPro = new List<ProductsModel>();
@@ -183,8 +184,62 @@ namespace BTL_NHOM12_ClientPage.Controllers
             }
             return num;
         }
+        string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        bool checkDublicateKey(string id)
+        {
+            var a = from b in db.Contacts where b.contact_ID == id select b;
+            return a.Count() > 0;
+        }
         public ActionResult Index(string id)
         {
+            ViewBag.allSale = getAllSale();
+            ViewBag.sale = getSaleWithProductID(id);
+            ViewBag.product = getProductWithId(id);
+            ViewBag.topProduct = getTopProduct(8);
+            ViewBag.relatingProduct = getRelatingProduct(id);
+            ViewBag.boughtNumber = getProductBoughtNumber(id);
+            ViewBag.productID = id;
+            //get bonus of product
+            var getBonus = from b in db.Bonus
+                           join p in db.Product_Bonus on b.bonus_ID equals p.bonus_ID
+                           where p.product_ID == id
+                           select b;
+            ViewBag.bonusCount = getBonus.Count();
+            ViewBag.bonus = getBonus;
+            return View();
+        }
+        void insertToContact(string id, string cusName, string phone, string time, string productName)
+        {
+            Contact a = new Contact();
+            a.contact_ID = id;
+            a.username = cusName;
+            a.phone = phone;
+            a.product_name = productName;
+            a.status_Contact = "pending";
+            a.create_date = Convert.ToDateTime(time);
+            db.Contacts.InsertOnSubmit(a);
+            db.SubmitChanges();
+        }
+        [HttpPost]
+        public ActionResult Index(FormCollection f, string id)
+        {
+            string cusName =  f["subCusName"];
+            string cusPhone =  f["subCusPhone"];
+            string contactID = "CT" + RandomString(6);
+            do
+            {
+                contactID = "CT" + RandomString(6);
+            } while (checkDublicateKey(contactID));
+            string time = DateTime.Now.ToString("dd/MM/yyyy");
+            string productName = getProductWithId(id).product_name;
+            insertToContact(contactID, cusName, cusPhone, time, productName);
+            ViewBag.contacted = "true";
+            //
             ViewBag.allSale = getAllSale();
             ViewBag.sale = getSaleWithProductID(id);
             ViewBag.product = getProductWithId(id);

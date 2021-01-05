@@ -17,6 +17,11 @@ namespace BTL_NHOM12_ClientPage.Controllers
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+        bool checkDublicateKey(string id)
+        {
+            var a = from b in db.Bills where b.bill_ID == id select b;
+            return a.Count() > 0;
+        }
         ProductsModel getProductWithId(string id)
         {
             ProductsModel pro = new ProductsModel();
@@ -74,6 +79,10 @@ namespace BTL_NHOM12_ClientPage.Controllers
             string productID = Request["productID"];
             string time = DateTime.Now.ToString("dd/MM/yyyy");
             string madh = "DH" + RandomString(6);
+            do
+            {
+                madh = "DH" + RandomString(6);
+            } while (checkDublicateKey(madh));
             ViewBag.time = time;
             ViewBag.name = name;
             ViewBag.phone = phone;

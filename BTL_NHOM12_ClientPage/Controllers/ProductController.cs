@@ -205,7 +205,11 @@ namespace BTL_NHOM12_ClientPage.Controllers
         {
             if(string.IsNullOrEmpty(id))
             Response.Redirect("/Product/All");
-            
+            if (!checkProduct(id))
+            {
+                Response.Redirect("/Error/Index");
+                return View("Error");
+            }
             ViewBag.allSale = getAllSale();
             ViewBag.sale = getSaleWithProductID(id);
             ViewBag.product = getProductWithId(id);

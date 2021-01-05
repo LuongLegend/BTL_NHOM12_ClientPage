@@ -143,9 +143,9 @@ p {
     text-rendering: geometricPrecision
 }
 
-input[type=text], input[type=tel], textarea {
+/*input[type=text], input[type=tel], textarea {
     -webkit-appearance: none
-}
+}*/
 
 header {
     width: 100%;
@@ -1537,7 +1537,7 @@ header.fixed-mb {
 }
 
 .iH {
-    background-image: url('/images/home.png');
+    background-image: url('../images/home.png');
     width: 77px;
     padding: 0 10px !important;
     margin-right: 13px
@@ -1545,7 +1545,7 @@ header.fixed-mb {
 
 .iUs {
     position: absolute;
-    background-image: url('/images/iUs.png');
+    background-image: url('../images/iUs.png');
     background-repeat: no-repeat;
     background-position: center;
     width: 45px;
@@ -1558,7 +1558,7 @@ header.fixed-mb {
 
 .iPo {
     position: absolute;
-    background-image: url('/images/iPo.png');
+    background-image: url('../images/iPo.png');
     background-repeat: no-repeat;
     background-position: center;
     width: 45px;
@@ -1571,7 +1571,7 @@ header.fixed-mb {
 
 .iNo {
     position: absolute;
-    background-image: url('/images/iNo.png');
+    background-image: url('../images/iNo.png');
     background-repeat: no-repeat;
     background-position: center;
     width: 45px;
@@ -1584,7 +1584,7 @@ header.fixed-mb {
 
 .iMa {
     position: absolute;
-    background-image: url('/images/iMa.png');
+    background-image: url('../images/iMa.png');
     background-repeat: no-repeat;
     background-position: center;
     width: 45px;
@@ -1597,7 +1597,7 @@ header.fixed-mb {
 
 .iAd {
     position: absolute;
-    background-image: url('/images/iAd.png');
+    background-image: url('../images/iAd.png');
     background-repeat: no-repeat;
     background-position: center;
     width: 45px;

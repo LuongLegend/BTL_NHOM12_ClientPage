@@ -3,5 +3,249 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="col-right hmb">
+    <div class="sidebar sidebar-right">
+        <img class="lazy mbtm" alt="Giỏ hàng dongoaichinhhang" src="~/Assests/images/chinh-sach-ban-hang-dongoaichinhhang.jpg" style="display: inline; opacity: 1;">
+        <div id="best-seller-left" class="widget widget-seller">
+            <h4 class="seller_title radius">Sản phẩm mua nhiều</h4>
+            <div class="widget-content border">
+                <div class="wrap-item owl-carousel owl-theme" style="opacity: 1; display: block;">
+                    @foreach (var item in ViewBag.topProduct)
+                    {
+                        <div class="item-pro-seller">
+                            <a href="/Product/Index/@item.product_ID">
+                                <div class="product-thumb">
+                                <img  class="lazy" alt="@item.product_name" src="~/Assests/@item.photo.Replace("~", "")" style="display: inline; opacity: 1;"></div>
+                                <div class="product-info">
+                                    <h4>@item.product_name</h4>
+                                    <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-left">
+    <div class="product-detail accordion-detail border radius">
+        <div class="row">
+            <div class="detail-gallery">
+                <div class="inner">
+                    <div class="mid">
+                        <img src="~/Assests/@ViewBag.product.photo.Replace("~", "")" alt="@ViewBag.product.product_name" title="@ViewBag.product.product_name">
+                    </div>
+                    <div class="dnopro">
+                        <p><img alt="đổi hàng" class="lazy" src="~/Assests/images/hoan-tra-tien.png" style="display: inline; opacity: 1;"> Đổi trả hàng miễn phí trong 7 ngày</p>
+                        <p><img  alt="thanh toán" class="lazy" src="~/Assests/images/thanh-toan.png" style="display: inline; opacity: 1;"> Giao hàng &amp; Thanh toán tận nơi toàn quốc</p>
+                        <p><img alt="giao hàng" class="lazy" src="~/Assests/images/giao-hang.png" style="display: inline; opacity: 1;"> SÁNG nhận CHIỀU giao <i style="font-size:80%">(Áp dụng Tp HCM)</i></p>
+                        <p><img  alt="chính hãng" class="lazy" src="~/Assests/images/thong-tin.png" style="display: inline; opacity: 1;"> Cam kết Hàng Chính Hãng 100% - Hoàn tiền 300% nếu hàng giả, kém chất lượng, ...</p>
+                    </div>
+                    <div class="clearm20"></div>
+                </div>
+            </div>
+            <div class="detail-info">
+                <div class="inner">
+                    <h1 class="title-detail" itemprop="name">@ViewBag.product.product_name</h1>
+                    <div class="vote">
+                        <div style="width:100%"></div>
+                    </div>
+                    <ul class="hsxmsp">
+                        <li><i>Hãng SX:</i> <a href="/SearchProduct/Index?tk=@ViewBag.product.product_brand" class="ahsx">@ViewBag.product.product_brand</a></li>
+                        <li><i>Xuất xứ:</i> <a href="//SearchProduct/Index?tk=@ViewBag.product.origin" class="ahsx">@ViewBag.product.origin</a></li>
+                        <li><i>Mã SP:</i> <span itemprop="sku">@ViewBag.product.product_ID</span></li>
+                    </ul>
+                    <meta itemprop="mpn" content="DNCH20313">
+                    <p class="desc" itemprop="description">
+                        @Html.Raw(@ViewBag.product.summary.Replace("-", "<br/>-"))
+                    </p>
+                    <meta itemprop="image" content="https://dongoaichinhhang.com/img/vien-uong-transamin-500mg-trang-da-tri-nam-nhat-ban-100-vien-1.jpg">
+                    <span itemscope="" itemprop="brand" itemtype="http://schema.org/Brand">
+                        <meta itemprop="url" content="https://dongoaichinhhang.com/tim-kiem.html?tk=Daiichi Sankyo">
+                        <meta itemprop="name" content="Daiichi Sankyo">
+                    </span>
+                </div>
+                <p> Tình trạng: 
+                @if(ViewBag.product.quantity > 0)
+                {
+                    <span id="js-product-status" style="font-weight:700">Còn hàng (@ViewBag.product.quantity-sp)</span>
+                }
+                @if(ViewBag.product.quantity == 0)
+                {
+                <span id="js-product-status" style="font-weight:700;color: red">Hết hàng </span>
+                }
+                <p class="hdm">Đã Mua: <b>@ViewBag.boughtNumber</b></p>
+                <span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                    <span class="pprice">
+                        <span class="txt_title">Giá bán: </span>
+                        <span property="minimumPaymentDue" typeof="PriceSpecification" class="hall">
+                            <span property="price">@ViewBag.product.price</span>
+                            <meta itemprop="priceCurrency" content="VND">
+                        </span>
+                        <span itemprop="price" class="priceminintdp hall">@ViewBag.product.price</span>
+                        <ins id="insPrice">@(string.Format("{0:000,0đ}", @ViewBag.product.price))</ins>
+                    </span>
+                    <time itemprop="priceValidUntil" datetime="2021-11-05T16:13:18+07:00"></time>
+                    <link itemprop="itemCondition" href="http://schema.org/UsedCondition">
+                    @if (ViewBag.sale.sale_price != 0)
+                    {
+                        <div class="promo-alert cusp" style="margin-top:7px">
+                            @{
+                                var p = (ViewBag.sale.sale_price / 1000).ToString() + "k";
+                                var m = (ViewBag.sale.min_product).ToString() + "sp";
+                            }
 
+                            Giảm @p/sp khi mua từ @m
+                        </div>
+                    }
+                    <link itemprop="availability" href="http://schema.org/InStock">
+                    <meta itemprop="url" content="https://dongoaichinhhang.com/vien-uong-transamin-500mg-trang-da-tri-nam-nhat-ban-100-vien.html">
+                </span>
+                <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                    <meta itemprop="ratingValue" content="5">
+                    <meta itemprop="bestRating" content="5">
+                    <meta itemprop="worstRating" content="1">
+                    <meta itemprop="reviewCount" content="1">
+                    <meta itemprop="itemReviewed" content="Viên uống Transamin 500mg trắng da trị nám Nhật Bản 100 viên">
+                </span>
+                <span itemprop="review" itemtype="http://schema.org/Review" itemscope="">
+                    <span itemprop="author" itemtype="http://schema.org/Person" itemscope="">
+                        <meta itemprop="name" content="Đồ Ngoại">
+                    </span>
+                    <span itemprop="reviewRating" itemtype="http://schema.org/Rating" itemscope="">
+                        <meta itemprop="ratingValue" content="4">
+                        <meta itemprop="bestRating" content="5">
+                    </span>
+                </span>
+                <aside class="promo-online">
+                    <b><img src="~/Assests/images/icon-gift.png" alt="gift"> Quà tặng kèm theo:</b>
+                    <ul class="listprogift">
+                        @*@foreach(var item in ViewBag.sale) BONUS
+                        {
+                            <li class="w100">
+                                <img src="~/Assest/img/mat-na-duong-am-cho-da-tu-thien-nhien-innisfree-my-real-squeeze-mask-1-mieng.jpg" alt="mat-na-duong-am-cho-da-tu-thien-nhien-innisfree-my-real-squeeze-mask-1-mieng.jpg" align="left">
+                                <p>Mặt nạ dưỡng ẩm cho da từ thiên nhiên Innisfree My Real Squeeze Mask 1 Miếng</p>
+                                <br><ins>@(string.Format("{0:000,0 đ}", @item.sale_price))</ins>
+                            </li>
+                        }*@
+                    </ul>
+                    <div style="clear:both"></div>
+                </aside>
+                <input id="txtIdPro" type="hidden" value="20313">
+                <div class="detail-extralink">
+                    <input class="qty-val" id="txtQty" value="1" min="1" type="number" max="99">
+                    <a class="abodr" id="aOdr" href="/gio-hang.html?i=20313">
+                        Đặt Hàng Ngay<br>
+                        <div class="xhc">Xem hàng trước, nhận hàng trả tiền</div>
+                    </a>
+                </div>
+                <script>$("#txtQty").change(function () { var iQty = parseInt($('#txtQty').val()); var pMin = @ViewBag.product.price; var pMin2 = @ViewBag.product.price - @ViewBag.sale.sale_price; if (iQty < 1) iQty = 1; if (iQty >= @ViewBag.sale.min_product) { findCt('insPrice').innerHTML = pMin2.toLocaleString() + 'đ'; } else findCt('insPrice').innerHTML = pMin.toLocaleString() + 'đ'; $('#aOdr').attr('href', '/gio-hang.html?i=20313.' + iQty); });</script>
+                <div class="boxcust">
+                    <span id="alertcallforme"></span>
+                    <h4>GỌI LẠI CHO TÔI</h4>
+                    <span id="formcallme"></span>
+                    <input type="text" id="txt-cus-name" class="cus-name" placeholder="Họ và tên">
+                    <input type="tel" id="txt-cus-phone" class="cus-phone" placeholder="Để lại số điện thoại, chúng tôi gọi lại ngay">
+                    <input type="button" id="btn-send-cust" class="btn-send-cust" value="GỬI">
+                    <div class="clr"></div>
+                </div>
+                <div class="gdm">Gọi đặt mua: <img class="lazy" alt="call" src="~/Assests/images/ho-tro-247.png" style="display: inline; opacity: 1;"> <a href="tel:0983667466">0983 667 466</a> (tư vấn miễn phí)</div>
+            </div>
+        </div>
+        <div class="clr"></div>
+        <div class="box_item01">
+            <div class="box_item_in">
+                <h2 class="tabgdt">@ViewBag.product.product_name</h2>
+                <div class="bica">
+                    @Html.Raw(HttpUtility.HtmlDecode(@ViewBag.product.detail))
+                </div>
+            </div>
+        </div>
+        <p class="hmb" style="text-align:center"><a class="abodr" href="/gio-hang.html?i=20313">Đặt Hàng Ngay<br></a></p>
+        <div class="box-similar">
+            <p class="headdetail">Đặt hàng nhanh</p>
+            <div style="text-align:center">
+                <img class="lazy" alt="Giỏ hàng dongoaichinhhang" src="~/Assests/images/dongoaichinhhang-chinh-sach-ban-hang.jpg" style="display: inline; opacity: 1;">
+                <p class="hodr">Bạn muốn <span>ĐẶT MUA NGAY</span> sản phẩm này hoặc muốn được <span>TƯ VẤN</span> rõ hơn về sản phẩm trước khi mua hàng, hãy <span>GỌI</span> vào số <span>hotline <a href="tel:0983667466" style="font-weight:700;color:red;font-size:150%">0983 667 466</a></span> của chúng tôi hoặc để lại thông tin bên dưới. Chúng tôi sẽ gọi lại bạn hoàn toàn <span>MIỄN PHÍ</span> chỉ sau ít phút.</p>
+                <img src="~/Assests/images/xem.gif" alt="Giỏ hàng dongoaichinhhang">
+            </div>
+            <div class="oqfl"><img class="lazy" alt="Giỏ hàng dongoaichinhhang" src="~/Assests/images/giohang.png" style="display: inline; opacity: 1;"></div>
+            <div class="form-order clearfix oqfr">
+                <form class="form-inline" id="formQuickOrder">
+                    <div class="form-div col-xs-12">
+                        <div class="iUs"></div>
+                        <input type="text" class="form-control" id="txtFullName" value="z" placeholder="Họ tên (*)">
+                        <div class="iPo"></div>
+                        <input type="tel" class="form-control" id="txtPhone" value="4324234232" placeholder="Số điện thoại (*)">
+                        <div class="iAd"></div>
+                        <input type="text" class="form-control" id="txtAddress" value="" placeholder="Địa chỉ (*)">
+                        <div class="iNo"></div>
+                        <textarea rows="4" id="txtNote" class="form-control" placeholder="Ghi chú hoặc Mã quà tặng" style="height: auto"></textarea>
+                    </div>
+                    <div class="form-div col-xs-12" style="text-align: center">
+                        <a class="btn btn-primary" href="javascript:void();" id="btnSendOrder">ĐẶT HÀNG NHANH</a>
+                        <div id="redataorder"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="clr"></div>
+       
+    </div>
+    <div class="clr"></div>
+   
+        <div class="clr"></div>
+        <div class="hmb fns"><i><u>Lưu ý:</u></i> (*) Thời gian phát huy tối đa hiệu quả có thể khác nhau tùy theo cơ địa mỗi người. Do đó, hãy liên hệ trực tiếp để được tư vấn rõ hơn</div>
+    </div>
+    <div class="clr"></div>
+<div class="box-similar">
+        <div class="box-similar-header">
+            <h4 class="tabgdtmc">Sản phẩm dành riêng cho bạn</h4>
+        </div>
+        <div class="box-body clearfix">
+            <ul class="homeproduct pro-slider fixheight owl-carousel owl-theme" style="opacity: 1; display: block;">
+                <div class="owl-wrapper-outer">
+                    <div class="owl-wrapper" style="width: 2832px; left: 0px; display: block;">
+                        @foreach (var item in @ViewBag.relatingProduct)
+                        {
+                           <div class="owl-item" style="width: 236px;">
+                                <li>
+                                    <div class="absoluteimg">
+                                        <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                            <img class="lazy"
+                                                 data-src="/Assests/@item.photo.Replace("~","")"
+                                                 alt="@item.product_name"
+                                                 src="/Assests/@item.photo.Replace("~","")"
+                                                 style="display: block; opacity: 1;" />
+                                        </a>
+                                        <div class="prolink">
+                                            <a href="#" onclick="return showCart(40565, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                        </div>
+                                    </div>
+                                    @foreach (var i in ViewBag.allSale)
+                                    {
+                                        if (item.product_ID == i.product_ID)
+                                        {
+                                            var p = (i.sale_price / 1000).ToString() + "k";
+                                            var m = (i.min_product).ToString() + "sp";
+                                            <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
+                                            break;
+                                        }
 
+                                    }
+                                    <h3>
+                                        <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                            @item.product_name
+                                        </a>
+                                    </h3>
+                                    <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                                    <div class="vote"><div style="width: 0%;"></div></div>
+                                </li>
+                            </div>
+                       }
+                     </div>
+                    </div>
+            </ul>
+        </div>
+    </div>

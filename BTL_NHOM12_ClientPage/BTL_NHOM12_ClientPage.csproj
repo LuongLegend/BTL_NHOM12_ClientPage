@@ -157,6 +157,7 @@
   <ItemGroup>
     <Content Include="Assests\CSS\cart.min.css" />
     <Content Include="Assests\CSS\category.css" />
+    <Content Include="Assests\CSS\detail4.css" />
     <Content Include="Assests\CSS\home.css" />
     <Content Include="Assests\CSS\jquery.fancybox.css" />
     <Content Include="Assests\CSS\menu.css" />
@@ -175,6 +176,7 @@
     <Content Include="Assests\fUp\chinh-sach-hang-chinh-hang-anh-15 %281%29.png" />
     <Content Include="Assests\fUp\chinh-sach-hang-chinh-hang-anh-15.png" />
     <Content Include="Assests\fUp\chinh-sach-hang-chinh-hang-anh-23.jpg" />
+    <Content Include="Assests\fUp\gel-tri-mun-murad-blemish-spot-treatment-my-15ml-anh-1.jpg" />
     <Content Include="Assests\fUp\giao-hàng-1.jpg" />
     <Content Include="Assests\fUp\giao-hàng-2.jpg" />
     <Content Include="Assests\fUp\giao-hang.jpg" />
@@ -184,14 +186,24 @@
     <Content Include="Assests\images\call.png" />
     <Content Include="Assests\images\cart.png" />
     <Content Include="Assests\images\cash.png" />
+    <Content Include="Assests\images\chinh-sach-ban-hang-dongoaichinhhang.jpg" />
+    <Content Include="Assests\images\dongoaichinhhang-chinh-sach-ban-hang.jpg" />
     <Content Include="Assests\images\dongoaichinhhang.png" />
+    <Content Include="Assests\images\giao-hang.png" />
     <Content Include="Assests\images\giohang.png" />
+    <Content Include="Assests\images\ho-tro-247.png" />
+    <Content Include="Assests\images\hoan-tra-tien.png" />
     <Content Include="Assests\images\hotline.png" />
     <Content Include="Assests\images\i-cart.png" />
+    <Content Include="Assests\images\icon-gift.png" />
+    <Content Include="Assests\images\icon-km.gif" />
     <Content Include="Assests\images\ifship.png" />
     <Content Include="Assests\images\internet-banking.png" />
     <Content Include="Assests\images\iSearch.png" />
     <Content Include="Assests\images\search.png" />
+    <Content Include="Assests\images\thanh-toan.png" />
+    <Content Include="Assests\images\thong-tin.png" />
+    <Content Include="Assests\images\xem.gif" />
     <Content Include="Assests\Image\bonus\mat-na-bun.jpg" />
     <Content Include="Assests\Image\bonus\mat-na-kitty.jpg" />
     <Content Include="Assests\Image\bonus\mat-na-tham.jpg" />

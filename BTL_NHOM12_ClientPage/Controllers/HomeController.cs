@@ -9,32 +9,34 @@ namespace BTL_NHOM12_ClientPage.Controllers
     public class HomeController : Controller
     {
         LinqDoNgoaiChinhHangDataContext db = new LinqDoNgoaiChinhHangDataContext();
-        public ActionResult Index()
+        List<ProductsModel> getTopProduct(int limit = 10000)
         {
             List<ProductsModel> listTopPro = new List<ProductsModel>();
-            List<SaleModel> listSale = new List<SaleModel>();
-            var getAllCat = from a in db.Categories select a;
-            ViewBag.Cat = getAllCat;
             //get list amount products had bought - return productID and amount
-            var productsHasBought = (from a in db.Product_Bills
-                                    group a by a.product_ID into b
-                                    orderby b.Sum(x => x.quanitity) descending
+            var productsHadBought = from Product_Bill in db.Product_Bills
+                                    join B in db.Bills on Product_Bill.bill_ID equals B.bill_ID
+                                    join C in db.Products on Product_Bill.product_ID equals C.product_ID
+                                    where
+                                      B.status_bill == "approved" &&
+                                      C.active == true
+                                    group Product_Bill by new
+                                    {
+                                        Product_Bill.product_ID
+                                    } into g
+                                    orderby
+                                      (int?)g.Sum(p => p.quanitity) descending
                                     select new
                                     {
-                                        product_ID=b.Key,
-                                        amount= b.Sum(x=>x.quanitity)
-                                    });
-            //list product had bought - return product rows
-            var getTopProduct = from d in db.Products
-                                join c in db.Product_Bills on d.product_ID equals c.product_ID
-                                join s in db.Bills on c.bill_ID equals s.bill_ID
-                                where (d.active == true)&&(s.status_bill == "approved")
-                                select d;
-            foreach(var item in productsHasBought)
+                                        g.Key.product_ID,
+                                        amount = (int?)g.Sum(p => p.quanitity)
+                                    };
+            var allProduct = from a in db.Products select a;
+
+            foreach (var item in productsHadBought)
             {
-                foreach(var i in getTopProduct)
+                foreach (var i in allProduct)
                 {
-                    if(item.product_ID == i.product_ID)
+                    if (item.product_ID == i.product_ID)
                     {
                         ProductsModel pro = new ProductsModel();
                         pro.product_ID = i.product_ID;
@@ -49,11 +51,19 @@ namespace BTL_NHOM12_ClientPage.Controllers
                         pro.active = (bool)i.active;
                         pro.detail = i.detail;
                         listTopPro.Add(pro);
-                        if (listTopPro.Count == 6) break;
+                        if (listTopPro.Count == limit) break;
                     }
+                    if (listTopPro.Count == limit) break;
                 }
             }
-
+            return listTopPro;
+        }
+        public ActionResult Index()
+        {
+            List<ProductsModel> listTopPro = new List<ProductsModel>();
+            List<SaleModel> listSale = new List<SaleModel>();
+            var getAllCat = from a in db.Categories select a;
+            ViewBag.Cat = getAllCat;
             var getProductMyPhamDacTri = from a in db.Products
                                          join c in db.Product_Categories on a.product_ID equals c.product_ID
                                          join d in db.Categories on c.category_ID equals d.category_ID
@@ -104,10 +114,9 @@ namespace BTL_NHOM12_ClientPage.Controllers
             ViewBag.ChamSocDa = getProductChamSocDa;
             ViewBag.Collagen = getProductCollagen;
             ViewBag.TPCN = getProductThucPhamChucNang;
-            ViewBag.TopProduct = listTopPro;
+            ViewBag.TopProduct = getTopProduct(8);
             return View();
         }
-
         public ActionResult About()
         {
             var getAllCat = from a in db.Categories select a;

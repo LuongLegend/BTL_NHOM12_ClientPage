@@ -143,6 +143,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ReviewNewsController.cs" />
     <Compile Include="Controllers\SearchProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -346,7 +347,11 @@
     <Content Include="Views\Catagory\Index.cshtml" />
     <Content Include="Views\Product\All.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
+
+    <Content Include="Views\ReviewNews\Index.cshtml" />
+
     <Content Include="Views\Error\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -129,7 +129,7 @@
                                 findCt('insPrice').innerHTML = pMin2.toLocaleString() + 'đ';
                             } else
                                 findCt('insPrice').innerHTML = pMin.toLocaleString() + 'đ';
-                            $('#aOdr').attr('href', '/Cart?i=20313.' + iQty);
+                            $('#aOdr').attr('href', '/Cart/Add?productId=@ViewBag.product.product_ID&quantity=' + iQty);
                         });
                 </script>
                 @{ 

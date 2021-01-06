@@ -19,9 +19,12 @@ namespace BTL_NHOM12_ClientPage.Models
         {
             get
             {
-                if (quantity >= min_product) return quantity * price - sale_price;
-                else 
-                return quantity * price;
+                if (quantity >= min_product)
+                {
+                    return quantity * (price - sale_price);
+                }
+                else
+                    return quantity * price;
             }
         }
 
@@ -36,13 +39,11 @@ namespace BTL_NHOM12_ClientPage.Models
                 HttpContext.Current.Session["Cart"] = new List<CartItem>();
                 List<CartItem> ListCartItem = HttpContext.Current.Session["Cart"] as List<CartItem>;
                 ListCartItem.Add(CartItemCart);
-                //gan nguoc lai gio hang
                 HttpContext.Current.Session["Cart"] = ListCartItem;
             }
             else
             {
                 List<CartItem> ListCartItem = HttpContext.Current.Session["Cart"] as List<CartItem>;
-                //find id in Cart
                 var findCartItemCart = (from CartItem in ListCartItem where CartItem.productID == CartItemCart.productID select CartItem).FirstOrDefault();
                 //neu co san pham trong gio hang
                 if (findCartItemCart != null)
@@ -54,9 +55,7 @@ namespace BTL_NHOM12_ClientPage.Models
                 //neu khong co thi them san pham nay vao gio hang
                 else
                 {
-                    //them moi CartItemCart vao gio hang
                     ListCartItem.Add(CartItemCart);
-                    //gan nguoc lai vao HttpContext.Current.Session cart
                     HttpContext.Current.Session["Cart"] = ListCartItem;
                 }
             }
@@ -66,13 +65,10 @@ namespace BTL_NHOM12_ClientPage.Models
         public void CartDelete(string productID)
         {
             List<CartItem> Cart = HttpContext.Current.Session["Cart"] as List<CartItem>;
-            //find CartItem
             var CartItemCart = (from CartItem in Cart where CartItem.productID == productID select CartItem).FirstOrDefault();
             if (CartItemCart != null)
             {
-                //xoa sp khoi Cart
                 Cart.Remove(CartItemCart);
-                //gan lai Cart vao session Cart
                 HttpContext.Current.Session["Cart"] = Cart;
             }
         }
@@ -115,9 +111,14 @@ namespace BTL_NHOM12_ClientPage.Models
             foreach (var item in Cart)
             {
                 if(item.quantity>=item.min_product)
-                total += item.sale_price;
+                total += item.sale_price*item.quantity;
             }
             return total;
+        }
+        public void CartDestroy()
+        {
+            List<CartItem> objCart = new List<CartItem>();
+            HttpContext.Current.Session["Cart"] = objCart;
         }
     }
 }

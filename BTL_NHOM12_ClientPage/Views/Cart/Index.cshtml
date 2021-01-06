@@ -74,11 +74,18 @@
                                                             </span>
                                                         }
                                                     </div>
-
                                                 }
                                             </td>
                                             <td align="center" style="width:140px;">
-                                                <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                                                @if (item.quantity >= item.min_product && item.min_product > 0)
+                                                {
+                                                    <ins>@(string.Format("{0:000,0 đ}", @item.price -item.sale_price))</ins><br />
+                                                    <del>@(string.Format("{0:000,0 đ}", @item.price))</del>
+                                                }
+                                                @if (item.quantity < item.min_product || item.min_product ==0)
+                                                {
+                                                    <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                                                }
                                             </td>
                                             <td align="center" style="font-size:12px;width:70px;">
                                                 <div style="margin: 5px">
@@ -100,7 +107,6 @@
                                     }
                                 </tbody>
                             </table>
-                            <button class="btn btn-default" style="background-color: chartreuse" onclick="location.href = '/Cart/Update'" type="submit">Cập nhật giỏ hàng</button>
                         </form>
 
                         <div class="clr"></div>
@@ -155,17 +161,17 @@
                             <input type="text" class="form-control" id="inputAdress" name="inputAddress" placeholder="Địa chỉ" style="padding: 12px" required>
                         </div>
                         <input name="productID" value="@ViewBag.productID" style="display:none" />
-                        <input name="mode" value="onePro" style="display:none" />
                         <div class="form-group">
                             <textarea class="form-control" id="inputNote" name="inputNote" rows="5" placeholder="Ghi chú" style="padding: 12px;height:60px"></textarea>
                         </div>
+                        <input name="mode" value="cart" style="display:none" />
                         <div id="UpdatePanel2">
                             <div>
                                 <div class="clr"></div>
                                 <div style="margin: 15px 0 0 0;color:red">Phương thức thanh toán:<br></div>
                                 <div style="margin: 10px 0 20px 30px;line-height:23px">
-                                    <input id="rdbCOD" type="radio" name="thanhtoan" value="cod" checked="checked"><label for="rdbCOD">  COD nhận hàng và thanh toán tại nhà</label><br>
-                                    <input id="rdbCK" type="radio" name="thanhtoan" value="banking"><label for="rdbCK">  Chuyển khoản ngân hàng</label><br>
+                                    <input id="rdbCOD" type="radio" name="payMethod" value="cod" checked="checked"><label for="rdbCOD">  COD nhận hàng và thanh toán tại nhà</label><br>
+                                    <input id="rdbCK" type="radio" name="payMethod" value="banking"><label for="rdbCK">  Chuyển khoản ngân hàng</label><br>
                                     <div id="divAlertTT" style="margin:5px 0 10px 30px;border-left:1px solid #999;padding-left:10px">
                                         Ngân hàng TMCP Ngoại thương VN (<b>Vietcombank</b>)
                                         <br>Số tk: <b>03264545689</b><br>Chủ tk: <b>NHOM 12</b><br>Chi nhánh: <b>Hà Nội</b>

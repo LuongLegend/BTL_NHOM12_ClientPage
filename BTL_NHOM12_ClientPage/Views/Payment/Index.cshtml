@@ -12,7 +12,7 @@
             <div>Họ và Tên: <b>@ViewBag.name</b></div>
             <div>Điện Thoại: <b>@ViewBag.phone</b></div>
             <div>Địa Chỉ: <b>@ViewBag.address</b></div>
-            <div style="display:none">Ghi Chú: <b>@ViewBag.note</b></div>
+            <div>Ghi Chú: <b>@ViewBag.note</b></div>
         </div>
         <div style="clear:both"></div>
         <div style="background-color:#fcf7f7;border:solid 1px #f5c4a2;padding:0 5px">
@@ -22,6 +22,10 @@
                 @if (ViewBag.mode == "onePro")
                 {
                     <b>COD nhận hàng và thanh toán tại nhà</b>  
+                }
+                @if(ViewBag.mode == "cart")
+                {
+                    <b>@ViewBag.payMethod</b>
                 }
             </div>
         </div>
@@ -36,25 +40,72 @@
                     <td>&nbsp;<b>SẢN PHẨM</b></td>
                     <td style="width:100px" class="hmb"><b>&nbsp;THÀNH&nbsp;TIỀN&nbsp;</b></td>
                 </tr>
-                <tr>
-                    @if (ViewBag.mode == "onePro")
-                    {
+                @if (ViewBag.mode == "onePro")
+                {
+                    <tr>
                         <td>
                             <img src="~/Assests/@ViewBag.product.photo.Replace("~","")" align="left" class="aimg">
                             <div><b>@ViewBag.product.product_name</b></div>
                             <i>Tặng kèm:</i>
-                            @foreach(var item in ViewBag.bonus)
+                            @foreach (var item in ViewBag.bonus)
                             {
-                                <span style="color: red">+ @item.name_bonus<br>
+                                <span style="color: red">
+                                    + @item.name_bonus<br>
                                 </span>
                             }
                             <div>Số lượng: <b style="color: red">1 x <ins>@(string.Format("{0:000,0 đ}", ViewBag.product.price))</ins></b></div>
                         </td>
                         <td style="text-align:center;color:red" class="hmb"><b>@(string.Format("{0:000,0 đ}", ViewBag.product.price))</b></td>
+                    </tr>
+                }
+                @if (ViewBag.mode == "cart")
+                {
+                    foreach (var item in ViewBag.product)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/Assests/@item.photo.Replace("~","")" align='left' class='aimg' />
+                                <div><b>@item.productName</b></div>
+                                @if (item.bonus.Count > 0)
+                                {
+                                    <div style="font-size:13px">
+                                        <i>Tặng kèm:</i>
+                                        @foreach (var i in item.bonus)
+                                        {
+                                            <span style="color:#fdab63">
+                                                + @i
+                                                <br>
+                                            </span>
+                                        }
+                                    </div>
+                                }
+                                <div>Số lượng: <b style='color: red'>@item.quantity x 
+                                    @if (item.quantity >= item.min_product && item.min_product>0)
+                                    {
+                                        <ins>@(string.Format("{0:000,0 đ}", @item.price -item.sale_price))</ins><br />
+                                        <del>@(string.Format("{0:000,0 đ}", @item.price))</del>
+                                    }
+                                    @if (item.quantity < item.min_product || item.min_product ==0)
+                                    {
+                                        <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                                    }
+                                    </b>
+                                </div>
+                                @{
+                                    if (item.min_product > 0)
+                                    {
+                                        var p = (item.sale_price / 1000).ToString() + "k";
+                                        var m = (item.min_product).ToString() + "sp";
+                                        <div class="promo-alert" style="margin-top:5px">Giảm @p/sp khi mua từ @m</div>
+                                    }
+                                }
+                            </td>
+                            <td style='text-align:center;color:red' class='hmb'><b>@(string.Format("{0:000,0 đ}", @item.toPrice))</b></td>
+                        </tr>
                     }
-                </tr>
+                }
             </tbody>
-        </table>
+            </table>
         <table border="0" class="todrf">
             <tbody>
                 @if (ViewBag.mode == "onePro")
@@ -71,6 +122,24 @@
                     <tr style="border-top:solid 1px #e0e0e0">
                         <td style="text-align:right">Tổng tiền cần thanh toán : <br><i style="color:gray">(Nhận hàng mới thanh toán)</i> </td>
                         <td style="text-align:right;color:red;font-weight:700;vertical-align:middle">@(string.Format("{0:000,0 đ}", ViewBag.product.price))</td>
+                    </tr>
+                }
+                @if (ViewBag.mode == "cart")
+                {
+                    <tr style="border-bottom:solid 1px #e0e0e0">
+                        <td style="text-align:right">Tiền hàng : </td>
+                        <td style="text-align:right;width:120px;color:red">@(string.Format("{0:000,0 đ}", ViewBag.moneyWithoutSale))</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Giảm Chiết Khấu : </td>
+                        <td style="text-align:right;color:green">- @(string.Format("{0:000,0 đ}", ViewBag.saleMoney))</td>
+                    </tr>
+
+                    <tr style="border-top:solid 1px #e0e0e0">
+                        <td style="text-align:right">Tổng tiền cần thanh toán : <br><i style="color:gray">(Nhận hàng mới thanh toán)</i> </td>
+                        <td style="text-align:right;color:red;font-weight:700;vertical-align:middle">
+                         @(string.Format("{0:000,0 đ}", ViewBag.total))
+                        </td>
                     </tr>
                 }
             </tbody>

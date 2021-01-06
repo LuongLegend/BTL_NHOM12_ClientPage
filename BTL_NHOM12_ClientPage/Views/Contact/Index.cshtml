@@ -4,5 +4,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<div class="boxct bica">
+    <div class="mlefta">
+        <h4 class="title clr">Shop <span style="color:#ff3300;"><span style="font-size:22px;">ĐỒ NGOẠI CHÍNH HÃNG</span></span></h4>
+        <h4 class="title clr"><br>Trung tâm phân phối</h4>
+        <p>Đ/c: 11/71 Bùi Đình Túy, P.12, Q. Bình Thạnh, TpHCM<br>Đ/c kho: 55 Đường 47, KP 5, P. Hiệp Bình Chánh, Q. Thủ Đức, TpHCM
+        <br>Hotline: <a href="tel:0983667466">0983 667 466</a><br>Email: info@dongoaichinhhang.com<br>
+         Website: <a href="http://dongoaichinhhang.com/" rel="nofollow" title="Shop Đồ Ngoại">www.dongoaichinhhang.com </a></p>
+        <h4 class="title"><br>Sơ đồ Map</h4>
+        <p><iframe allowfullscreen="" frameborder="0" height="110" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1333.2537272719658!2d106.69780835760047!3d10.806865894974957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528c093fdafb9%3A0xbf42d864713572e1!2zMTEvNzEgQsO5aSDEkMOsbmggVHXDvSwgUGjGsOG7nW5nIDEyLCBCw6xuaCBUaOG6oW5oLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1550808182143" style="border:0;max-width:100%" width="550"></iframe></p>
+    </div>
+    <div class="form-order clearfix mrighta">
+            @{ 
+                if (ViewBag.sent!=null)
+                {
+                    <h1>Gửi thành công</h1>
+                }
+                else
+                {
+                    <h1> Gửi thông tin liên hệ</h1>
+                    <div class="form-order clearfix oqfr">
+                        <form method="post" action="~/Contact/Index" style="max-width: 600px">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Họ tên..." style="padding: 12px" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="inputPhone" name="inputPhone" placeholder="Số điện thoại(10 số)" style="padding: 12px"
+                                       required maxlength="10" minlength="10" pattern="[0-9]+">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="inputAdress" name="inputAddress" placeholder="Địa chỉ" style="padding: 12px" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" id="inputNote" name="inputNote" rows="5" placeholder="Ghi chú" style="padding: 12px;height:60px"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Gửi liên hệ</button>
+                        </form>
+                    </div>
+                }
+            }
+    </div>
+    <div class="clr"></div>
+</div>

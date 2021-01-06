@@ -3,11 +3,134 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="col-left">
+    <div class="barbox">
+        <h1 class="titlecate">@ViewBag.name</h1>
+    </div>
+    <div class="box-shock">
+        <div class="bica">
+            @if (ViewBag.catID)
+            {
+                @Html.Raw(HttpUtility.HtmlDecode(ViewBag.description))
+            }
+        </div>
+        <div class="rowsp">
+            <ul class="category-ul homeproduct nonslider">
+                @foreach (var item in ViewBag.products)
+                {
+                    <li>
+                        <div class="absoluteimg">
+                            <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                <img class="lazy"
+                                     data-src="/Assests/@item.photo.Replace("~","")"
+                                     alt="@item.product_name"
+                                     src="/Assests/@item.photo.Replace("~","")"
+                                     style="display: block; opacity: 1;" />
+                            </a>
+                            <div class="prolink">
+                                <a href="/Cart/Add?productId=@item.product_ID&quantity=1"><i></i>&nbsp;Thêm giỏ hàng</a>
+                            </div>
+                        </div>
+                        @foreach (var i in ViewBag.sale)
+                        {
+                            if (item.product_ID == i.product_ID)
+                            {
+                                var p = (i.sale_price / 1000).ToString() + "k";
+                                var m = (i.min_product).ToString() + "sp";
+                                <div class="promo-alert">Giảm @p/sp khi mua từ @m</div>
+                                break;
+                            }
 
-<h2>Index</h2>
-
-<h1>@ViewBag.idd</h1>
-<h1 style="color:crimson">
-    @ViewBag.cat
-</h1>
-<h2>Something</h2>
+                        }
+                        <h3>
+                            <a href="/Product/Index/@item.product_ID" title="@item.product_name">
+                                @item.product_name
+                            </a>
+                        </h3>
+                        <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                        <div class="vote"><div style="width: 0%;"></div></div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-right">
+    <div class="sidebar sidebar-right">
+        <div class="widget widget-seller">
+            <div class="widget widget-seller">
+                <h4 class="seller_title radius">Danh mục sản phẩm</h4>
+                <div class="widget-content">
+                    <ul class="category-ul-rght">
+                        <li class="has-sub-cat active">
+                            <a href="/Catagory?cat=1" title="Mỹ phẩm Đặc Trị">Mỹ phẩm Đặc Trị</a>
+                            <ul style="display: block;">
+                                @foreach (var item in ViewBag.cates)
+                                {
+                                    if (item.group_ID == "1")
+                                    {
+                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        <li class="has-sub-cat">
+                            <a href="/Catagory?cat=2" title="Thực phẩm Chức Năng">Thực phẩm Chức Năng</a>
+                            <ul style="display: none;">
+                                @foreach (var item in ViewBag.cates)
+                                {
+                                    if (item.group_ID == "2")
+                                    {
+                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        <li class="has-sub-cat">
+                            <a href="/Catagory?cat=3" title="Mỹ phẩm Chăm sóc Da">Mỹ phẩm Chăm sóc Da</a>
+                            <ul style="display: none;">
+                                @foreach (var item in ViewBag.cates)
+                                {
+                                    if (item.group_ID == "3")
+                                    {
+                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        <li class="has-sub-cat">
+                            <a href="/Catagory?cat=4" title="Thuốc mọc Tóc, Râu, Mi, Mày">Thuốc mọc Tóc, Râu, Mi, Mày</a>
+                            <ul style="display: none;">
+                                @foreach (var item in ViewBag.cates)
+                                {
+                                    if (item.group_ID == "4")
+                                    {
+                                        <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                        <li> <a href="/Catagory?cat=6" title="Nước hoa Chính hãng">Nước hoa Chính hãng</a></li>
+                        <li> <a href="/Catagory?cat=7" title="Collagen Đẹp Da">Collagen Đẹp Da</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clr"></div>
+            <div class="widget widget-seller">
+                <h4 class="seller_title radius">Thương hiệu hàng đầu</h4>
+                <div class="widget-content">
+                    <ul class="category-ul-rght">
+                        @foreach (var item in ViewBag.cates)
+                        {
+                            if (item.group_ID == "8")
+                            {
+                                <li><a href="/Catagory/Index/@item.category_ID" title="@item.category_name">@item.category_name</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>

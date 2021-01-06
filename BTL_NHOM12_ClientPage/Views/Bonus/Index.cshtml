@@ -3,6 +3,30 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
-
+<div class="lprogift">
+    @foreach(var item in ViewBag.bonus)
+    {
+    <div class="item">
+        <a href="/Bonus/ViewBonus/@item.bonusID">
+        <img class="lazy img" align="left" src="~/Assests/@item.photo.Replace("~","")" style="display: block; opacity: 1;">
+        </a>
+        <h2><a href="/Bonus/ViewBonus/@item.bonusID">@item.name</a></h2>
+        <p class="progift"><ins>@(string.Format("{0:000,0 đ}", @item.price))</ins></p>
+        <h1 style="color:tomato">Các sản phẩm có quà tặng này</h1>
+        <div class="cctent"></div>
+        <div class="tpron"></div>
+        <ul class="lipgift">
+            @foreach(var i in item.listProBonus)
+            {
+            <li>
+                <a href="/Product/Index/@i.product_ID">
+                    <img alt="@i.product_name" title="@i.product_name" class="lazy img2"
+                         src="~/Assests/@i.photo.Replace("~","")" style="display: inline; opacity: 1;"><br>
+                    @(string.Format("{0:000,0 đ}", @i.price))
+                </a>
+            </li>
+            }
+        </ul>
+    </div>
+    }
+</div>

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ViewBonus";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="col-left">
@@ -8,12 +8,6 @@
         <h1 class="titlecate">@ViewBag.name</h1>
     </div>
     <div class="box-shock">
-        <div class="bica">
-            @if (ViewBag.catID)
-            {
-                @Html.Raw(HttpUtility.HtmlDecode(ViewBag.description))
-            }
-        </div>
         <div class="rowsp">
             <ul class="category-ul homeproduct nonslider">
                 @foreach (var item in ViewBag.products)
@@ -134,3 +128,4 @@
         </div>
     </div>
 </div>
+

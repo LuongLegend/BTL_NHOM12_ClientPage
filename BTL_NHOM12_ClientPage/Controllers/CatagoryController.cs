@@ -40,7 +40,6 @@ namespace BTL_NHOM12_ClientPage.Controllers
                                  min_product = a.min_product,
                                  sale_price = a.sale_price
                              };
-            ViewBag.sale = listSale;
             foreach (var item in getAllSale)
             {
                 SaleModel s = new SaleModel();
@@ -50,6 +49,7 @@ namespace BTL_NHOM12_ClientPage.Controllers
                 s.min_product = (int)item.min_product;
                 listSale.Add(s);
             }
+            ViewBag.sale = listSale;
             if (id != "~~~") //find by category_ID
             {
                 var CatRecord = db.Categories.Where(item => item.category_ID == id).FirstOrDefault();

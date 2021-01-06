@@ -148,6 +148,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Bonus.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\LinqDoNgoaiChinhHang.designer.cs">
       <AutoGen>True</AutoGen>
@@ -166,6 +167,7 @@
     <Content Include="Assests\CSS\jquery.fancybox.css" />
     <Content Include="Assests\CSS\menu.css" />
     <Content Include="Assests\CSS\owl-carousel.css" />
+    <Content Include="Assests\CSS\progift.css" />
     <Content Include="Assests\CSS\styles4.css" />
     <Content Include="Assests\fUp\1%281%29.png" />
     <Content Include="Assests\fUp\2.png" />
@@ -347,11 +349,9 @@
     <Content Include="Views\Catagory\Index.cshtml" />
     <Content Include="Views\Product\All.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
-
     <Content Include="Views\ReviewNews\Index.cshtml" />
-
     <Content Include="Views\Error\Index.cshtml" />
-
+    <Content Include="Views\Bonus\ViewBonus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

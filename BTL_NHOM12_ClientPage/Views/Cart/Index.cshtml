@@ -4,5 +4,116 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<section class="mtsl clr">
+    <ul class="breadcrumb">
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+            <a href="/" itemprop="url" title="Đồ Ngoại Chính Hãng"><span itemprop="title" class="iH"></span></a><span>›</span>
+        </li>
+        <li><a href="/gio-hang.html">Giỏ hàng</a></li>
+    </ul>
+    <div class="boxct">
+        <div class="clr">
+            <div id="UpdatePanel1">
+                <div id="divOrder">
+                    <p style="margin: 15px 0 10px 0;">Giỏ hàng có: <b> sản phẩm</b></p>
+                    <p style="margin: 5px 0 10px 0;">Tổng tiền: <b style="color: Red;"></b></p>
+
+                    <div></div>
+
+                    <div class="clr"></div>
+                    <div class="todrprice">
+                        <table border="0" style="width: 362px; max-width: 100%; position: initial;">
+                            <tbody>
+                                <tr style="border-bottom: solid 1px #e0e0e0;">
+                                    <td style="text-align: right;">Tiền hàng :</td>
+                                    <td style="text-align: right; width: 120px; color: red;">
+                                        <span id="lbPriceTotalTruocChietKhau"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;">Giảm Chiết Khấu :</td>
+                                    <td style="text-align: right; color: green;">- <span id="lbPriceChietKhau"></span></td>
+                                </tr>
+
+                                <tr style="border-top: solid 1px #e0e0e0;">
+                                    <td style="text-align: right;">
+                                        Tổng tiền cần thanh toán : <br />
+                                        <i style="color: gray;">(Nhận hàng mới thanh toán)</i>
+                                    </td>
+                                    <td style="text-align: right; color: red; font-weight: 700; vertical-align: middle;">
+                                        <span id="lbPriceTotalAll"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+
+        <div class="clr"></div>
+        <div class="clr">
+            <div class="oqfl">
+                <img data-src="/Images/giohang.png" class="lazy" alt="Giỏ hàng dongoaichinhhang" src="/Images/giohang.png" style="display: inline; opacity: 1;" />
+            </div>
+
+            <div class="oqfr">
+                <div id="pFormOrder" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btOrder')">
+                    <div style="max-width: 600px;">
+                        <div class="titleodr">THÔNG TIN ĐƠN HÀNG</div>
+                        <div class="box--form">
+                            <div class="iUs"></div>
+                            <input name="txtName" type="text" id="txtName" class="form-control" placeholder="Họ và Tên (*)" />
+
+                            <div class="iPo"></div>
+                            <input name="txtPhone" type="tel" id="txtPhone" class="form-control" placeholder="Điện thoại (*)" />
+
+                            <div class="iAd"></div>
+                            <input name="txtAddress" type="text" id="txtAddress" class="form-control" placeholder="Địa chỉ" />
+                            <div class="iNo"></div>
+                            <textarea name="txtContent" rows="2" cols="20" id="txtContent" class="form-control" placeholder="Ghi chú đơn hàng" style="height: 93px;"></textarea>
+                            <div id="UpdatePanel2">
+                                <div>
+                                    <span style="color: Brown; font-weight: bold;">
+                                        <input id="cbHidePro" type="checkbox" name="cbHidePro" onclick="javascript:setTimeout('__doPostBack(\'cbHidePro\',\'\')', 0)" /><label for="cbHidePro"> Yêu cầu Che Giấu Tên Sản Phẩm !</label>
+                                    </span>
+                                    <br />
+
+                                    <div class="clr"></div>
+
+                                    <div style="margin: 15px 0 0 0; color: red;">Phương thức thanh toán:<br /></div>
+                                    <div style="margin: 10px 0 20px 30px; line-height: 23px;">
+                                        <input id="rdbCOD" type="radio" name="thanhtoan" value="rdbCOD" checked="checked" /><label for="rdbCOD"> COD nhận hàng và thanh toán tại nhà</label><br />
+                                        <input id="rdbCK" type="radio" name="thanhtoan" value="rdbCK" onclick="javascript:setTimeout('__doPostBack(\'rdbCK\',\'\')', 0)" /><label for="rdbCK"> Chuyển khoản ngân hàng</label><br />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input id="ctl04" type="checkbox" name="ctl04" checked="checked" /><label for="ctl04"> Tôi đồng ý với các chính sách và quy định mua hàng tại website</label><br />
+                            <br />
+                            <div>
+                                <div><span id="lblThongBao" style="color: #ff0033; font-weight: bold;"></span></div>
+                                <div><span id="lbErrorMsg" style="color: Red;"></span></div>
+                                <input type="submit" name="btOrder" value=" Đặt hàng " id="btOrder" class="btn" style="font-weight: bold;" />
+                            </div>
+                            <iframe src="https://sieuthichinhhang.vn/re/dnch.aspx?a=odr" scrolling="no" style="height: 60px; width: 100%;"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clr"></div>
+    </div>
+</section>
+
 

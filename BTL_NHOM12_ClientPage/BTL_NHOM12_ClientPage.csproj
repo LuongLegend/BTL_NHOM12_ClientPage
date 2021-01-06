@@ -130,10 +130,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BonusController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CateController.cs" />
     <Compile Include="Controllers\ChinhSachController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ProductCateController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SearchProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -219,6 +221,7 @@
     <Content Include="Assests\imgs\kem-no-nguc-upsize-chinh-hang-tu-nga.jpg" />
     <Content Include="Assests\imgs\kem-tri-seo-gentacin-nhat-ban-10gr.jpg" />
     <Content Include="Assests\imgs\my-pham-dac-tri-2.jpg" />
+    <Content Include="Assests\imgs\my-pham-dac-tri-4.jpg" />
     <Content Include="Assests\imgs\my-pham-dac-tri-chinh-hang-1.png" />
     <Content Include="Assests\imgs\my-pham-trang-diem-moi-ngay-1.png" />
     <Content Include="Assests\imgs\san-pham-khuyen-mai-hot-1.png" />
@@ -283,6 +286,8 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\SearchProduct\Index.cshtml" />
+    <Content Include="Views\Cate\Index.cshtml" />
+    <Content Include="Views\ProductCate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

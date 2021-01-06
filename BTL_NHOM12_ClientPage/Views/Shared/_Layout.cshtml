@@ -1,4 +1,28 @@
-﻿<!DOCTYPE html>
+﻿@using BTL_NHOM12_ClientPage.Models
+@functions{
+    public List<CartItem> getCartItem()
+    {
+        List<CartItem> Cart = new List<CartItem>();
+        Cart = Session["Cart"] as List<CartItem>;
+        if (Session["Cart"] == null)
+            Session["Cart"] = Cart;
+        else
+            Cart = Session["Cart"] as List<CartItem>;
+        return Cart;
+    }
+    public int getNumOfCart()
+    {
+        List<CartItem> Cart = new List<CartItem>();
+        Cart = Session["Cart"] as List<CartItem>;
+        if (Session["Cart"] == null)
+            Session["Cart"] = Cart;
+        else
+            Cart = Session["Cart"] as List<CartItem>;
+        if (Cart == null) return 0;
+        return Cart.Count();
+    }
+}
+<!DOCTYPE html>
 <html lang="vi" xml:lang="vi">
 <head>
     <title>Đồ Ngoại Chính Hãng mang Chất lượng và Uy tín đến tay người dùng</title>
@@ -24,9 +48,14 @@
                 <div class="wraphead">
                     <a class="icon-menu navbar-toggle" id="mobileMenu" data-toggle="collapse"><span class="icon-bar first"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
                     <a class="logo" title="dongoaichinhhang.com" href="/"><img src="~/Assests/images/dongoaichinhhang.png" alt="dongoaichinhhang.com" /></a><img id="sSrch" class="sSrch" src="~/Assests/images/iSearch.png" alt="search" />
-                    <form id="main-search" autocomplete="off" action="/SearchProduct/Index"><input class="topinput" type="text" minLength="1" maxlength="100" placeholder="Tìm sản phẩm..." id="keySearch" name="tk" autocomplete="off" /><button class="btntop" type="submit"><i class="icondmx-topsearch"></i></button></form>
+                    <form id="main-search" autocomplete="off" action="/SearchProduct/Index">
+                        <input class="topinput" type="text" minLength="1" maxlength="100" placeholder="Tìm sản phẩm(tên sản phẩm, hãng sx, nơi sx)..." id="keySearch" name="tk" autocomplete="off" />
+                        <button class="btntop" type="submit">
+                            <i class="icondmx-topsearch"></i>
+                        </button>
+                    </form>
                     <div id="cart-box">
-                        <a href="/Cart/Index" class="cart hidecb"><i class="icart"></i><span id="cbCount">0</span> </a>
+                        <a href="/Cart/Index" class="cart hidecb"><i class="icart"></i><span id="cbCount">@getNumOfCart()</span> </a>
                         <aside id="core-brain">
                             <div class="panel">
                                 <div id="cb-cart">
@@ -34,7 +63,7 @@
                                         <div class="product-list ps-container ps-theme-default" id="list-cart"></div>
                                         <div class="pull-bottom ">
                                             <div class="cart-url">
-                                                <p>Bạn có <strong id="cb-cart-badge">0</strong> sản phẩm trong giỏ hàng</p>
+                                                <p>Bạn có <strong id="cb-cart-badge">@getNumOfCart()</strong> sản phẩm trong giỏ hàng</p>
                                                 <a href="/Cart/Index">Xem giỏ hàng</a>
                                             </div>
                                         </div>

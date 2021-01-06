@@ -90,16 +90,36 @@ namespace BTL_NHOM12_ClientPage.Controllers
             ViewBag.note = note;
             ViewBag.mode = mode;
             ViewBag.madh = madh;
+            var getBonus = from b in db.Bonus
+                            join p in db.Product_Bonus on b.bonus_ID equals p.bonus_ID
+                            where p.product_ID == productID
+                            select b;
+            ViewBag.bonus = getBonus;
             if (mode == "onePro")
             {
                 ViewBag.product = getProductWithId(productID);
-                var getBonus = from b in db.Bonus
-                               join p in db.Product_Bonus on b.bonus_ID equals p.bonus_ID
-                               where p.product_ID == productID
-                               select b;
-                ViewBag.bonus = getBonus;
                 insertBill(madh, name, phone, address, note, time, "cod");
                 insertProduct_Bill(productID, madh, 1);
+            }
+            if(mode == "cart")
+            {
+                // ViewBag.allProduct
+                string payMethod = Request["payMethod"];
+                ViewBag.payMethod = payMethod == "cod" ? "COD nhận hàng và thanh toán tại nhà" : "Chuyển khoản ngân hàng";
+                List <CartItem> Cart = Session["Cart"] as List<CartItem>;
+                ViewBag.product = Cart;
+                ShoppingCart objCart = new ShoppingCart();
+                ViewBag.total = objCart.CartTotal();
+                ViewBag.moneyWithoutSale = objCart.CartTotalWithoutSale();
+                ViewBag.saleMoney = objCart.TotalSale();
+                //insert into Bill
+                insertBill(madh, name, phone, address, note, time, payMethod);
+                //insert into Product_Bill
+                foreach(var item in Cart)
+                {
+                    insertProduct_Bill(item.productID, madh, item.quantity);
+                }
+                objCart.CartDestroy();
             }
             return View();
         }

@@ -53,18 +53,13 @@
                     </div>
                     <ul class="hsxmsp">
                         <li><i>Hãng SX:</i> <a href="/SearchProduct/Index?tk=@ViewBag.product.product_brand" class="ahsx">@ViewBag.product.product_brand</a></li>
-                        <li><i>Xuất xứ:</i> <a href="//SearchProduct/Index?tk=@ViewBag.product.origin" class="ahsx">@ViewBag.product.origin</a></li>
+                        <li><i>Xuất xứ:</i> <a href="/SearchProduct/Index?tk=@ViewBag.product.origin" class="ahsx">@ViewBag.product.origin</a></li>
                         <li><i>Mã SP:</i> <span itemprop="sku">@ViewBag.product.product_ID</span></li>
                     </ul>
                     <meta itemprop="mpn" content="DNCH20313">
                     <p class="desc" itemprop="description">
                         @Html.Raw(@ViewBag.product.summary.Replace("-", "<br/>-"))
                     </p>
-                    <meta itemprop="image" content="https://dongoaichinhhang.com/img/vien-uong-transamin-500mg-trang-da-tri-nam-nhat-ban-100-vien-1.jpg">
-                    <span itemscope="" itemprop="brand" itemtype="http://schema.org/Brand">
-                        <meta itemprop="url" content="https://dongoaichinhhang.com/tim-kiem.html?tk=Daiichi Sankyo">
-                        <meta itemprop="name" content="Daiichi Sankyo">
-                    </span>
                 </div>
                 <p> Tình trạng: 
                 @if(ViewBag.product.quantity > 0)
@@ -86,8 +81,6 @@
                         <span itemprop="price" class="priceminintdp hall">@ViewBag.product.price</span>
                         <ins id="insPrice">@(string.Format("{0:000,0đ}", @ViewBag.product.price))</ins>
                     </span>
-                    <time itemprop="priceValidUntil" datetime="2021-11-05T16:13:18+07:00"></time>
-                    <link itemprop="itemCondition" href="http://schema.org/UsedCondition">
                     @if (ViewBag.sale.sale_price != 0)
                     {
                         <div class="promo-alert cusp" style="margin-top:7px">
@@ -99,24 +92,6 @@
                             Giảm @p/sp khi mua từ @m
                         </div>
                     }
-                    <link itemprop="availability" href="http://schema.org/InStock">
-                    <meta itemprop="url" content="https://dongoaichinhhang.com/vien-uong-transamin-500mg-trang-da-tri-nam-nhat-ban-100-vien.html">
-                </span>
-                <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
-                    <meta itemprop="ratingValue" content="5">
-                    <meta itemprop="bestRating" content="5">
-                    <meta itemprop="worstRating" content="1">
-                    <meta itemprop="reviewCount" content="1">
-                    <meta itemprop="itemReviewed" content="Viên uống Transamin 500mg trắng da trị nám Nhật Bản 100 viên">
-                </span>
-                <span itemprop="review" itemtype="http://schema.org/Review" itemscope="">
-                    <span itemprop="author" itemtype="http://schema.org/Person" itemscope="">
-                        <meta itemprop="name" content="Đồ Ngoại">
-                    </span>
-                    <span itemprop="reviewRating" itemtype="http://schema.org/Rating" itemscope="">
-                        <meta itemprop="ratingValue" content="4">
-                        <meta itemprop="bestRating" content="5">
-                    </span>
                 </span>
                 @if(ViewBag.bonusCount > 0)
                 {
@@ -138,10 +113,10 @@
                 <input id="txtIdPro" type="hidden" value="20313">
                 <div class="detail-extralink">
                     <input class="qty-val" id="txtQty" value="1" min="1" type="number" max="99">
-                    <a class="abodr" id="aOdr" href="/gio-hang.html?i=20313">
+                    <a class="abodr" id="aOdr" href="/Cart/Add?productId=@ViewBag.product.product_ID&quantity=1">
                         Đặt Hàng Ngay<br>
                         <div class="xhc">Xem hàng trước, nhận hàng trả tiền</div>
-                    </a>
+                    </a>    
                 </div>
                 <script>
                     $("#txtQty")
@@ -154,7 +129,7 @@
                                 findCt('insPrice').innerHTML = pMin2.toLocaleString() + 'đ';
                             } else
                                 findCt('insPrice').innerHTML = pMin.toLocaleString() + 'đ';
-                            $('#aOdr').attr('href', '/Cart?i=20313.' + iQty);
+                            $('#aOdr').attr('href', '/Cart/Add?productId=@ViewBag.product.product_ID&quantity=' + iQty);
                         });
                 </script>
                 @{ 
@@ -218,11 +193,7 @@
                 </form>
             </div>
         </div>
-        <div class="clr"></div>
-       
     </div>
-    <div class="clr"></div>
-   
         <div class="clr"></div>
         <div class="hmb fns"><i><u>Lưu ý:</u></i> (*) Thời gian phát huy tối đa hiệu quả có thể khác nhau tùy theo cơ địa mỗi người. Do đó, hãy liên hệ trực tiếp để được tư vấn rõ hơn</div>
     </div>
@@ -248,7 +219,7 @@
                                                  style="display: block; opacity: 1;" />
                                         </a>
                                         <div class="prolink">
-                                            <a href="#" onclick="return showCart(40565, 1);"><i></i>&nbsp;Thêm giỏ hàng</a>
+                                            <a href="/Cart/Add?productId=@item.product_ID&quantity=1"><i></i>&nbsp;Thêm giỏ hàng</a>
                                         </div>
                                     </div>
                                     @foreach (var i in ViewBag.allSale)

@@ -84,13 +84,8 @@ namespace BTL_NHOM12_ClientPage.Models
             if (CartItem != null)
             {
                 CartItem.quantity = new_quantity;
+               
             }
-        }
-        //xoa toan bo gio hang
-        public void CartDestroy()
-        {
-            List<CartItem> objCart = new List<CartItem>();
-            HttpContext.Current.Session["Cart"] = objCart;
         }
         //tong tien thanh toan
         public int CartTotal()
@@ -100,6 +95,27 @@ namespace BTL_NHOM12_ClientPage.Models
             foreach (var item in Cart)
             {
                 total += item.toPrice;
+            }
+            return total;
+        }
+        public int CartTotalWithoutSale()
+        {
+            List<CartItem> Cart = HttpContext.Current.Session["Cart"] as List<CartItem>;
+            int total = 0;
+            foreach (var item in Cart)
+            {
+                total += item.price*item.quantity;
+            }
+            return total;
+        }
+        public int TotalSale()
+        {
+            List<CartItem> Cart = HttpContext.Current.Session["Cart"] as List<CartItem>;
+            int total = 0;
+            foreach (var item in Cart)
+            {
+                if(item.quantity>=item.min_product)
+                total += item.sale_price;
             }
             return total;
         }

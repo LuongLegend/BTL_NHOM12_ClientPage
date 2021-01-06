@@ -19,9 +19,9 @@
                 <div id="UpdatePanel1">
                     <div id="divOrder">
                         <p style="margin: 15px 0 10px 0">Giỏ hàng có: <b>@ViewBag.countPro sản phẩm</b></p>
-                        <p style="margin: 5px 0 10px 0">Tổng tiền: <b style="color: Red">220.000₫</b></p>
-
-                        <div>
+                        <p style="margin: 5px 0 10px 0">Tổng tiền: <b style="color: Red">@(string.Format("{0:000,0 đ}", @ViewBag.total))</b></p>
+                        <button class="btn btn-danger" onclick="location.href = '/Home/Index'">Tiếp tục mua hàng</button>
+                        <form action="/Cart/Update" method="post">
                             <table class="tableedit" cellspacing="4" cellpadding="4" rules="all" border="1" id="gvCart" style="border-color:#E3EAEE;border-style:None;width:100%;">
                                 <tbody>
                                     <tr align="center" style="color:#333333;background-color:#77ca64;font-size:13px;font-weight:bold;height:40px;">
@@ -33,15 +33,15 @@
                                         <th scope="col">Thành tiền</th>
                                         <th scope="col">Xóa</th>
                                     </tr>
-                                        @{
-                                            int stt = 1;
-                                        }
-                                        @foreach (var item in Model)
-                                        {
-                                         <tr>
+                                    @{
+                                        int stt = 1;
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
                                             <td align="center" style="width:30px;">
                                                 @stt
-                                                @{ 
+                                                @{
                                                     stt++;
                                                 }
                                             </td>
@@ -51,25 +51,29 @@
                                             <td align="left">
                                                 <a href="/Product/Index/@item.productID"><span id="gvCart_ctl02_lbName" style="font-weight:bold;">@item.productName</span></a>
                                                 @{
-                                                    var p = (item.sale_price / 1000).ToString() + "k";
-                                                    var m = (item.min_product).ToString() + "sp";
-                                                    <div class="promo-alert" style="margin-top:5px">Giảm @p/sp khi mua từ @m</div>
+                                                    if (item.min_product > 0)
+                                                    {
+                                                        var p = (item.sale_price / 1000).ToString() + "k";
+                                                        var m = (item.min_product).ToString() + "sp";
+                                                        <div class="promo-alert" style="margin-top:5px">Giảm @p/sp khi mua từ @m</div>
+
+                                                    }
                                                 }
-                                                @{ 
+                                                @{
                                                     int bonusCount = item.bonus.Count;
                                                 }
                                                 @if (bonusCount > 0)
                                                 {
-                                                <div style="font-size:13px">
-                                                    <i>Tặng kèm:</i>
-                                                    @foreach (var i in item.bonus)
-                                                    {
-                                                        <span style="color:#fdab63">
-                                                            + @i
-                                                            <br>
-                                                        </span>
-                                                    }
-                                                </div>
+                                                    <div style="font-size:13px">
+                                                        <i>Tặng kèm:</i>
+                                                        @foreach (var i in item.bonus)
+                                                        {
+                                                            <span style="color:#fdab63">
+                                                                + @i
+                                                                <br>
+                                                            </span>
+                                                        }
+                                                    </div>
 
                                                 }
                                             </td>
@@ -79,24 +83,25 @@
                                             <td align="center" style="font-size:12px;width:70px;">
                                                 <div style="margin: 5px">
                                                     <div style="text-align: right; margin: 5px; display:flex">
-                                                        <input type="number" min="1" name="numPro" value="@item.quantity" style="width:50px" />
+                                                        <input id="amo_@item.productID" type="number" min="1" name="numPro_@item.productID" value="@item.quantity" style="width:50px" />
                                                     </div>
                                                 </div>
                                             </td>
                                             <td align="center" style="width:130px;">
                                                 <b>
-                                                    <span id="gvCart_ctl02_lbPriceTotal">@(string.Format("{0:000,0 đ}", @item.toPrice))</span>
+                                                    <span id="insPrice">@(string.Format("{0:000,0 đ}", @item.toPrice))</span>
                                                 </b>
                                                 <br>
                                             </td>
                                             <td align="center" style="width:130px;">
-                                                <button class="btn btn-danger" onclick="location.href = '/Cart/Remove?productId=@item.productID'">Xoá</button>
+                                                <a href="/Cart/Remove?productId=@item.productID" class="btn btn-default" style="background-color: tomato">Xoá</a>
                                             </td>
-                                         </tr>
-                                        }
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
-                        </div>
+                            <button class="btn btn-default" style="background-color: chartreuse" onclick="location.href = '/Cart/Update'" type="submit">Cập nhật giỏ hàng</button>
+                        </form>
 
                         <div class="clr"></div>
                         <div class="todrprice">
@@ -105,18 +110,22 @@
                                     <tr style="border-bottom:solid 1px #e0e0e0">
                                         <td style="text-align:right">Tiền hàng : </td>
                                         <td style="text-align:right;width:120px;color:red">
-                                            <span id="lbPriceTotalTruocChietKhau">220.000₫</span>
+                                            <span id="lbPriceTotalTruocChietKhau">@(string.Format("{0:000,0 đ}", @ViewBag.moneyWithoutSale))</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="text-align:right">Giảm Chiết Khấu : </td>
-                                        <td style="text-align:right;color:green">- <span id="lbPriceChietKhau">0₫</span></td>
+                                        <td style="text-align:right;color:green">
+                                        - <span id="lbPriceChietKhau">@(string.Format("{0:000,0 đ}", @ViewBag.saleMoney))
+                                          </span>
+                                        </td>
                                     </tr>
 
                                     <tr style="border-top:solid 1px #e0e0e0">
-                                        <td style="text-align:right">Tổng tiền cần thanh toán : <br><i style="color:gray">(Nhận hàng mới thanh toán)</i> </td>
+                                        <td style="text-align:right">Tổng tiền cần thanh toán : 
+                                        <br><i style="color:gray">(Nhận hàng mới thanh toán)</i> </td>
                                         <td style="text-align:right;color:red;font-weight:700;vertical-align:middle">
-                                            <span id="lbPriceTotalAll">220.000₫</span>
+                                            <span id="lbPriceTotalAll">@(string.Format("{0:000,0 đ}", @ViewBag.total))</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -124,7 +133,6 @@
                         </div>
                         <br><br><br><br><br><br><br><br><br><br>
                     </div>
-
                 </div>
             </div>
 

@@ -86,7 +86,11 @@ namespace BTL_NHOM12_ClientPage.Controllers
                 Session["Cart"] = Cart;
             else
                 Cart = Session["Cart"] as List<CartItem>;
+            ShoppingCart objCart = new ShoppingCart();
             ViewBag.countPro = Cart.Count();
+            ViewBag.total = objCart.CartTotal();
+            ViewBag.moneyWithoutSale = objCart.CartTotalWithoutSale();
+            ViewBag.saleMoney = objCart.TotalSale();
             return View(Cart);
         }
         public ActionResult Add(string productId, int quantity=1)
@@ -104,6 +108,24 @@ namespace BTL_NHOM12_ClientPage.Controllers
         {
             ShoppingCart objCart = new ShoppingCart();
             objCart.CartDelete(productId);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Update()
+        {
+            //duyet cac san pham tu gio hang
+            if (Session["Cart"] != null)
+            {
+                List<CartItem> Cart = new List<CartItem>();
+                Cart = Session["Cart"] as List<CartItem>;
+                foreach (var item in Cart)
+                {
+                    var cartQuantity = "numPro_" + item.productID;
+                    var number = Request[cartQuantity];
+                    ShoppingCart objCart = new ShoppingCart();
+                    objCart.CartUpdate(item.productID, Convert.ToInt32(number));
+                    
+                }
+            }
             return RedirectToAction("Index");
         }
     }

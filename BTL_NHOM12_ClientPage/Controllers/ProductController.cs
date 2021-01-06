@@ -207,8 +207,7 @@ namespace BTL_NHOM12_ClientPage.Controllers
             Response.Redirect("/Product/All");
             if (!checkProduct(id))
             {
-                Response.Redirect("/Error/Index");
-                return View("Error");
+                return RedirectToRoute("Error", "Index");
             }
             ViewBag.allSale = getAllSale();
             ViewBag.sale = getSaleWithProductID(id);

@@ -3,6 +3,188 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    if (ViewBag.countPro == 0)
+    {
+        <br />
+        <h1 style="font-weight:bold;font-size:80px">Giỏ hàng trống</h1>
+        <br /><br /><br />
+        <button class="btn btn-default" onclick="location.href = '/Home/Index'">Về trang chủ</button>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    }
+    else
+    {
+        <div class="boxct">
+            <div class="clr">
+                <div id="UpdatePanel1">
+                    <div id="divOrder">
+                        <p style="margin: 15px 0 10px 0">Giỏ hàng có: <b>@ViewBag.countPro sản phẩm</b></p>
+                        <p style="margin: 5px 0 10px 0">Tổng tiền: <b style="color: Red">@(string.Format("{0:000,0 đ}", @ViewBag.total))</b></p>
+                        <button class="btn btn-danger" onclick="location.href = '/Home/Index'">Tiếp tục mua hàng</button>
+                        <form action="/Cart/Update" method="post">
+                            <table class="tableedit" cellspacing="4" cellpadding="4" rules="all" border="1" id="gvCart" style="border-color:#E3EAEE;border-style:None;width:100%;">
+                                <tbody>
+                                    <tr align="center" style="color:#333333;background-color:#77ca64;font-size:13px;font-weight:bold;height:40px;">
+                                        <th scope="col">Stt</th>
+                                        <th scope="col">Hình Ảnh</th>
+                                        <th scope="col">Sản phẩm</th>
+                                        <th scope="col">Giá bán</th>
+                                        <th scope="col">Số lượng</th>
+                                        <th scope="col">Thành tiền</th>
+                                        <th scope="col">Xóa</th>
+                                    </tr>
+                                    @{
+                                        int stt = 1;
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td align="center" style="width:30px;">
+                                                @stt
+                                                @{
+                                                    stt++;
+                                                }
+                                            </td>
+                                            <td align="center">
+                                                <a href="/Product/Index/@item.productID"><img src="~/Assests/@item.photo.Replace("~","")" class="odrimgcol"></a>
+                                            </td>
+                                            <td align="left">
+                                                <a href="/Product/Index/@item.productID"><span id="gvCart_ctl02_lbName" style="font-weight:bold;">@item.productName</span></a>
+                                                @{
+                                                    if (item.min_product > 0)
+                                                    {
+                                                        var p = (item.sale_price / 1000).ToString() + "k";
+                                                        var m = (item.min_product).ToString() + "sp";
+                                                        <div class="promo-alert" style="margin-top:5px">Giảm @p/sp khi mua từ @m</div>
 
-<h2>Index</h2>
+                                                    }
+                                                }
+                                                @{
+                                                    int bonusCount = item.bonus.Count;
+                                                }
+                                                @if (bonusCount > 0)
+                                                {
+                                                    <div style="font-size:13px">
+                                                        <i>Tặng kèm:</i>
+                                                        @foreach (var i in item.bonus)
+                                                        {
+                                                            <span style="color:#fdab63">
+                                                                + @i
+                                                                <br>
+                                                            </span>
+                                                        }
+                                                    </div>
+                                                }
+                                            </td>
+                                            <td align="center" style="width:140px;">
+                                                @if (item.quantity >= item.min_product && item.min_product > 0)
+                                                {
+                                                    <ins>@(string.Format("{0:000,0 đ}", @item.price -item.sale_price))</ins><br />
+                                                    <del>@(string.Format("{0:000,0 đ}", @item.price))</del>
+                                                }
+                                                @if (item.quantity < item.min_product || item.min_product ==0)
+                                                {
+                                                    <ins>@(string.Format("{0:000,0 đ}", @item.price))</ins>
+                                                }
+                                            </td>
+                                            <td align="center" style="font-size:12px;width:70px;">
+                                                <div style="margin: 5px">
+                                                    <div style="text-align: right; margin: 5px; display:flex">
+                                                        <input id="amo_@item.productID" type="number" min="1" name="numPro_@item.productID" value="@item.quantity" style="width:50px" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td align="center" style="width:130px;">
+                                                <b>
+                                                    <span id="insPrice">@(string.Format("{0:000,0 đ}", @item.toPrice))</span>
+                                                </b>
+                                                <br>
+                                            </td>
+                                            <td align="center" style="width:130px;">
+                                                <a href="/Cart/Remove?productId=@item.productID" class="btn btn-default" style="background-color: tomato">Xoá</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </form>
 
+                        <div class="clr"></div>
+                        <div class="todrprice">
+                            <table border="0" style="width: 362px; max-width: 100%; position: initial">
+                                <tbody>
+                                    <tr style="border-bottom:solid 1px #e0e0e0">
+                                        <td style="text-align:right">Tiền hàng : </td>
+                                        <td style="text-align:right;width:120px;color:red">
+                                            <span id="lbPriceTotalTruocChietKhau">@(string.Format("{0:000,0 đ}", @ViewBag.moneyWithoutSale))</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right">Giảm Chiết Khấu : </td>
+                                        <td style="text-align:right;color:green">
+                                        - <span id="lbPriceChietKhau">@(string.Format("{0:000,0 đ}", @ViewBag.saleMoney))
+                                          </span>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="border-top:solid 1px #e0e0e0">
+                                        <td style="text-align:right">Tổng tiền cần thanh toán : 
+                                        <br><i style="color:gray">(Nhận hàng mới thanh toán)</i> </td>
+                                        <td style="text-align:right;color:red;font-weight:700;vertical-align:middle">
+                                            <span id="lbPriceTotalAll">@(string.Format("{0:000,0 đ}", @ViewBag.total))</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br><br><br><br><br><br><br><br><br><br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clr"></div>
+            <div class="clr" style="margin-top: 30px">
+                <div class="oqfl">
+                    <img class="lazy" alt="Giỏ hàng dongoaichinhhang" src="~/Assests/images/giohang.png" style="display: inline; opacity: 1;">
+                </div>
+                <div class="oqfr" style="margin-top: 30px">
+                    <form method="post" action="~/Payment/Index" style="max-width: 600px">
+                        <div class="titleodr">THÔNG TIN ĐƠN HÀNG</div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Họ tên..." style="padding: 12px" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="inputPhone" name="inputPhone" placeholder="Số điện thoại(10 số)" style="padding: 12px"
+                                   required maxlength="10" minlength="10" pattern="[0-9]+">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="inputAdress" name="inputAddress" placeholder="Địa chỉ" style="padding: 12px" required>
+                        </div>
+                        <input name="productID" value="@ViewBag.productID" style="display:none" />
+                        <div class="form-group">
+                            <textarea class="form-control" id="inputNote" name="inputNote" rows="5" placeholder="Ghi chú" style="padding: 12px;height:60px"></textarea>
+                        </div>
+                        <input name="mode" value="cart" style="display:none" />
+                        <div id="UpdatePanel2">
+                            <div>
+                                <div class="clr"></div>
+                                <div style="margin: 15px 0 0 0;color:red">Phương thức thanh toán:<br></div>
+                                <div style="margin: 10px 0 20px 30px;line-height:23px">
+                                    <input id="rdbCOD" type="radio" name="payMethod" value="cod" checked="checked"><label for="rdbCOD">  COD nhận hàng và thanh toán tại nhà</label><br>
+                                    <input id="rdbCK" type="radio" name="payMethod" value="banking"><label for="rdbCK">  Chuyển khoản ngân hàng</label><br>
+                                    <div id="divAlertTT" style="margin:5px 0 10px 30px;border-left:1px solid #999;padding-left:10px">
+                                        Ngân hàng TMCP Ngoại thương VN (<b>Vietcombank</b>)
+                                        <br>Số tk: <b>03264545689</b><br>Chủ tk: <b>NHOM 12</b><br>Chi nhánh: <b>Hà Nội</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input id="c" type="checkbox" name="ctl04" checked="checked" required><label for="ctl04"> Tôi đồng ý với các chính sách và quy định mua hàng tại website</label><br />
+                        <button type="submit" class="btn btn-default">Đặt hàng</button>
+                    </form>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+    }
+}

@@ -255,7 +255,7 @@ namespace BTL_NHOM12_ClientPage.Controllers
             ViewBag.allSale = getAllSale();
             ViewBag.sale = getSaleWithProductID(id);
             ViewBag.product = getProductWithId(id);
-            ViewBag.topProduct = getTopProduct(8);
+            ViewBag.topProduct = getTopProduct(3);
             ViewBag.relatingProduct = getRelatingProduct(id);
             ViewBag.boughtNumber = getProductBoughtNumber(id);
             ViewBag.productID = id;

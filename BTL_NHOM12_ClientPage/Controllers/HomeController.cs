@@ -114,7 +114,7 @@ namespace BTL_NHOM12_ClientPage.Controllers
             ViewBag.ChamSocDa = getProductChamSocDa;
             ViewBag.Collagen = getProductCollagen;
             ViewBag.TPCN = getProductThucPhamChucNang;
-            ViewBag.TopProduct = getTopProduct(8);
+            ViewBag.TopProduct = getTopProduct(3);
             return View();
         }
         public ActionResult About()
